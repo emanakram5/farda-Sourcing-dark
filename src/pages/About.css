@@ -1,0 +1,84 @@
+/* About: cinematic container fly-through. Video backdrop, frosted-glass chapters, photos, film grain. */
+.about { margin-top: calc(-1 * (var(--nav-h) + 14px)); position: relative; z-index: 3; background: #050805; }
+main:has(.about) { background: none; }
+.afly { position: relative; height: 700vh; }
+.afly__stage { position: sticky; top: 0; height: 100vh; overflow: hidden; perspective: 1100px; perspective-origin: 50% 46%; background: #050805; }
+
+/* --- cinematic backdrop --- */
+.afly__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.afly__tint { position: absolute; inset: 0; transition: none; }
+.afly__vig { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.75) 100%); pointer-events: none; }
+.afly__grain { position: absolute; inset: -50%; opacity: .1; pointer-events: none; animation: grain .9s steps(6) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@keyframes grain { 0%{transform:translate(0,0)} 20%{transform:translate(-4%,3%)} 40%{transform:translate(3%,-5%)} 60%{transform:translate(-6%,-2%)} 80%{transform:translate(5%,4%)} 100%{transform:translate(0,0)} }
+.afly__bar { position: absolute; left: 0; right: 0; height: 6vh; background: #000; z-index: 6; animation: bars 1.6s cubic-bezier(.22,1,.36,1) both; }
+.afly__bar--t { top: 0; } .afly__bar--b { bottom: 0; }
+@keyframes bars { from { height: 50vh; } to { height: 6vh; } }
+
+/* moving floor grid */
+.afly__floor { position: absolute; left: -50%; right: -50%; bottom: -8%; height: 62%; transform-origin: 50% 100%; transform: perspective(520px) rotateX(68deg);
+  background-image: linear-gradient(rgba(255,255,255,.12) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,.12) 2px, transparent 2px);
+  background-size: 90px 90px; -webkit-mask-image: linear-gradient(transparent, #000 60%); mask-image: linear-gradient(transparent, #000 60%); }
+.afly__world { position: absolute; inset: 0; transform-style: preserve-3d; }
+.afly__pos { position: absolute; inset: 0; display: grid; place-items: center; transform-style: preserve-3d; pointer-events: none; }
+
+/* giant outlined chapter word, sits deeper than the glass */
+.ghost { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) translateZ(-520px); font-size: 22vw; font-weight: 800; letter-spacing: -.05em; line-height: 1;
+  color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.28); white-space: nowrap; pointer-events: none; text-transform: uppercase; }
+
+/* --- frosted glass chapter --- */
+.glass { position: relative; width: min(940px, 88vw); max-height: 78vh; border-radius: 22px; border: 1px solid; overflow: hidden; pointer-events: auto; color: #d4dcd5;
+  background-image: linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,0) 45%); }
+.glass__in { display: flex; flex-direction: column; max-height: 78vh; }
+.glass__bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 26px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.6); border-bottom: 1px solid rgba(255,255,255,.12); }
+.glass__bar b { color: #fff; letter-spacing: .32em; font-weight: 800; display: flex; align-items: center; gap: 10px; }
+.glass__bar b::before { content: ''; width: 8px; height: 8px; background: #70D900; box-shadow: 0 0 12px #70D900; }
+.glass__bar em { font-style: normal; font-variant-numeric: tabular-nums; }
+.glass__body { padding: clamp(24px, 3.6vw, 52px); display: grid; gap: 18px; align-content: start; overflow: auto; }
+.glass__h { color: #fff; font-size: clamp(32px, 4.6vw, 66px); line-height: 1; letter-spacing: -.04em; font-weight: 800; }
+.glass__h::after { content: ''; display: block; width: 52px; height: 3px; margin-top: 18px; background: #70D900; }
+.glass__h--xl { font-size: clamp(30px, 4.4vw, 62px); }
+.glass__lead { color: #fff; font-size: clamp(17px, 1.8vw, 24px); line-height: 1.5; font-weight: 500; margin-top: 4px; }
+.glass__body p { font-size: clamp(14px, 1.15vw, 17px); line-height: 1.7; max-width: 58ch; }
+.glass__ico { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; margin-bottom: 14px; background: rgba(112,217,0,.12); border: 1px solid rgba(112,217,0,.45); }
+.mask { display: block; overflow: hidden; padding-bottom: .06em; } .mask > span { display: block; }
+
+.glass__chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.glass__chips li { display: flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; font-size: 13px; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); }
+.glass__vals { display: grid; gap: 12px; margin-top: 22px; }
+.glass__vals li { display: flex; align-items: center; gap: 14px; font-size: clamp(17px, 2vw, 26px); font-weight: 600; color: #fff; letter-spacing: -.02em; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.16); }
+.glass__vals i { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 50%; background: #70D900; }
+
+/* photos inside glass + floating photo cards */
+.split { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(20px, 3vw, 44px); align-items: center; }
+.split--rev { grid-template-columns: 1fr 1.05fr; }
+.pic { width: 100%; height: clamp(220px, 42vh, 360px); object-fit: cover; border-radius: 14px; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 20px 50px rgba(0,0,0,.45); }
+.pic--tall { height: clamp(240px, 46vh, 400px); }
+.afly__pos--float .float { width: 22vw; max-width: 380px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6); background: #111; }
+
+/* chapter rail */
+.afly__rail { position: absolute; right: clamp(14px, 3vw, 40px); top: 50%; transform: translateY(-50%); display: grid; gap: 14px; z-index: 5; }
+.afly__rail li { display: flex; align-items: center; justify-content: flex-end; gap: 10px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #fff; opacity: .4; transition: opacity .4s; }
+.afly__rail i { width: 8px; height: 8px; border-radius: 50%; background: #fff; transition: transform .4s, background .4s; }
+.afly__rail .is-on { opacity: 1; } .afly__rail .is-on i { transform: scale(1.8); background: #70D900; box-shadow: 0 0 12px #70D900; }
+.afly__cue { position: absolute; left: 50%; bottom: 8vh; transform: translateX(-50%); font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: #fff; transition: opacity .4s; z-index: 5; }
+
+/* ending */
+.aend { position: relative; overflow: hidden; padding: clamp(90px, 13vw, 180px) var(--gutter); text-align: center; background: #050805; }
+.aend__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; }
+.aend::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#050805, rgba(5,8,5,.35) 40%, #050805); }
+.aend__in { position: relative; z-index: 2; }
+.aend h2 { color: #fff; font-size: clamp(44px, 9vw, 150px); line-height: .92; letter-spacing: -.05em; font-weight: 800; max-width: 12ch; margin: 0 auto; }
+.aend__btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.abtn { padding: 16px 34px; border-radius: 999px; background: #fff; color: #06100a; font-weight: 700; transition: transform .3s, box-shadow .3s; }
+.abtn--line { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.4); backdrop-filter: blur(10px); }
+.abtn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 0 40px rgba(112,217,0,.4); }
+
+@media (max-width: 800px) {
+  .split, .split--rev { grid-template-columns: 1fr; gap: 14px; }
+  .split--rev > .pic { order: 2; }
+  .pic, .pic--tall { height: 150px; }
+  .afly__rail, .ghost, .afly__pos--float { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .afly__grain { animation: none; } .afly__bar { animation: none; height: 6vh; } }

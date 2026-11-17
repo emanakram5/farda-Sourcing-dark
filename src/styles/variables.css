@@ -1,0 +1,41 @@
+:root {
+  /* Brand colors */
+  --green: #70D900;
+  --green-dark: #5cb800;
+  --green-tint: rgba(112,217,0,.12);
+  --black: #f2f6ef;
+  --ink: #050805;
+  --muted: #a2ada4;
+  --muted-light: #8d988f;
+  --border: rgba(255,255,255,.12);
+  --bg-soft: #0f150f;
+  --white: #0b100b;
+
+  /* Shape */
+  --surface: #0e140e;
+  --g: #70D900;
+  --radius-sm: 4px;
+  --radius: 10px;
+  --radius-lg: 12px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  /* Layout */
+  --container: 1312px;
+  --gutter: 64px;
+  --nav-h: 76px;
+
+  /* Type */
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
+  }
+}

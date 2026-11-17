@@ -1,0 +1,15 @@
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.section-header--center {
+  align-items: center;
+  text-align: center;
+}
+
+.section-header--center .section-sub {
+  margin-left: auto;
+  margin-right: auto;
+}

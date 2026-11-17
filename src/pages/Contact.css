@@ -1,0 +1,192 @@
+.contact {
+  padding-top: 64px;
+  padding-bottom: 88px;
+}
+
+.contact__row {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contact__details li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact__icon {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green-tint);
+}
+
+.contact__details strong {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.contact__details span {
+  font-size: 14.5px;
+}
+
+.contact__form-card {
+  padding: 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.contact__form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 16px;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.contact__field input,
+.contact__field select,
+.contact__field textarea {
+  width: 100%;
+  padding: 0 16px;
+  height: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: var(--black);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact__field textarea {
+  height: auto;
+  padding: 14px 16px;
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact__field input::placeholder,
+.contact__field textarea::placeholder {
+  color: #8a938e;
+}
+
+.contact__field input:focus,
+.contact__field select:focus,
+.contact__field textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(59, 169, 53, 0.14);
+}
+
+.contact__field [aria-invalid='true'] {
+  border-color: #e5604f;
+}
+
+.contact__select {
+  position: relative;
+}
+
+.contact__select select {
+  appearance: none;
+  padding-right: 40px;
+}
+
+.contact__select select.is-placeholder {
+  color: #8a938e;
+}
+
+.contact__select .icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.contact__error {
+  font-size: 12px;
+  color: #d4493a;
+}
+
+.contact__error--block {
+  padding: 10px 14px;
+  background: #fdeceb;
+  border-radius: 6px;
+}
+
+.contact__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 36px 12px;
+  text-align: center;
+}
+
+.contact__success-icon {
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.contact__success h2 {
+  font-size: 26px;
+}
+
+.contact__success p {
+  max-width: 360px;
+}
+
+@media (max-width: 1024px) {
+  .contact__row {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__form-card {
+    padding: 24px 20px;
+  }
+}

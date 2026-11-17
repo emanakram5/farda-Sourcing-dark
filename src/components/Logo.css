@@ -1,0 +1,39 @@
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #111613;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo--light {
+  color: #ffffff;
+}
+
+.logo svg {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
+
+.logo__name {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.logo__sub {
+  margin-top: 4px;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+}
