@@ -2,10 +2,10 @@
 
 export const SITE = {
   name: 'Farda Sourcing',
-  email: 'hello@fardasourcing.com',
+  email: 'info@fardasourcing.com',
   phone: '+92 331 1234567',
-  address: 'Wah Cantt, Punjab, Pakistan',
-  hours: 'Mon - Sat: 9:00 AM - 6:00 PM',
+  address: 'Bahria Town Phase 7, Rawalpindi, Pakistan',
+  hours: 'Mon - Sat: 8:00 AM - 5:00 PM',
 };
 
 // Images live in /public/images. If a file is missing, <Img /> shows a placeholder.
@@ -203,8 +203,8 @@ export const FOOTER_COLUMNS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com' },
-  { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com' },
-  { icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com' },
+  { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/company/fardasourcing/' },
+  { icon: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/share/1M31Lmp3Vc/' },
+  { icon: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/fardasourcing?dmpr=MW41YzJjcTlkYnVndw==' },
   { icon: 'x', label: 'X', href: 'https://x.com' },
 ];
