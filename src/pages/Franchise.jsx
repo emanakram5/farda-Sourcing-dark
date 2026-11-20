@@ -28,7 +28,7 @@ import {
 import './Franchise.css'
 
 // Put your hero image in the /public folder with this name
-const HERO_IMAGE = '/images/franchise-banner.png'
+const HERO_IMAGE = '/images/franchise-banner.svg'
 
 const centralTeam = [
   'Product research and selection',
