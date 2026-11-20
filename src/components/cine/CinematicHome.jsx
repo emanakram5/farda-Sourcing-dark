@@ -11,10 +11,10 @@ export default function CinematicHome() {
     <div className="cine">
       <section className="cine__sec cine__hero">
         <div className="cine__copy">
-          <h1 className="cine__h">
-            <span className="mask"><motion.span {...line(0)}>We source</motion.span></span>
-            <span className="mask"><motion.span {...line(1)}>the future.</motion.span></span>
-          </h1>
+          <h2 className="cine__h" style={{ fontSize: "98px" }}>
+            <span className="mask"><motion.span {...line(0)}>Bringing Tomorrow's</motion.span></span>
+            <span className="mask"><motion.span {...line(1)}>Innovation Today</motion.span></span>
+          </h2>
           <motion.p className="cine__p" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7, duration: 0.9, ease }}>
             AI robotics, smart tech and industrial machines from verified factories, delivered by one partner from first quote to final shipment.
           </motion.p>
