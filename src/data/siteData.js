@@ -17,7 +17,7 @@ export const IMAGES = {
   catConsumer: '/images/cat-consumer-electronics.svg',
   aboutOffice: '/image/about-office.svg',
   servicesShip: '/images/services-ship.svg',
-  marketsMap: '/images/markets-map.svg',
+  marketsMap: '/images/markets-map.png',
   supplierHandshake: '/images/supplier-handshake.svg',
   prodHumanoid: '/images/prod-humanoid.svg',
   prodVacuum: '/images/prod-vacuum.svg',
