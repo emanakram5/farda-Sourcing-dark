@@ -11,27 +11,27 @@ export const SITE = {
 // Images live in /public/images. If a file is missing, <Img /> shows a placeholder.
 export const IMAGES = {
   heroRobot: '/images/hero-robot.png',
-  catAi: '/images/cat-ai-robotics.png',
-  catSmartHome: '/images/cat-smart-home.png',
-  catIndustrial: '/images/cat-industrial.png',
-  catConsumer: '/images/cat-consumer-electronics.png',
-  aboutOffice: '/images/about-office.png',
-  servicesShip: '/images/services-ship.png',
-  marketsMap: '/images/markets-map.png',
-  supplierHandshake: '/images/supplier-handshake.png',
-  prodHumanoid: '/images/prod-humanoid.png',
-  prodVacuum: '/images/prod-vacuum.png',
-  prodRoboticArm: '/images/prod-robotic-arm.png',
-  prodCamera: '/images/prod-camera.png',
-  prodWearables: '/images/prod-wearables.png',
-  prodDrone: '/images/prod-drone.png',
-  prodScooter: '/images/prod-scooter.png',
-  prodHeadphones: '/images/prod-headphones.png',
-  hubShenzhen: '/images/hub-shenzhen.png',   // Shenzhen skyline
-  hubFoshan: '/images/hub-foshan.png',     // Foshan city
-  hubZhongshan: '/images/hub-zhongshan.png',  // Zhongshan lights or city
-  hubYiwu: '/images/hub-yiwu.png',       // Yiwu market or city
-  hubNingbo: '/images/hub-ningbo.png',     // Ningbo container port
+  catAi: '/images/cat-ai-robotics.svg',
+  catSmartHome: '/images/cat-smart-home.svg',
+  catIndustrial: '/images/cat-industrial.svg',
+  catConsumer: '/images/cat-consumer-electronics.svg',
+  aboutOffice: '/image/about-office.svg',
+  servicesShip: '/images/services-ship.svg',
+  marketsMap: '/images/markets-map.svg',
+  supplierHandshake: '/images/supplier-handshake.svg',
+  prodHumanoid: '/images/prod-humanoid.svg',
+  prodVacuum: '/images/prod-vacuum.svg',
+  prodRoboticArm: '/images/prod-robotic-arm.svg',
+  prodCamera: '/images/prod-camera.svg',
+  prodWearables: '/images/prod-wearables.svg',
+  prodDrone: '/images/prod-drone.svg',
+  prodScooter: '/images/prod-scooter.svg',
+  prodHeadphones: '/images/prod-headphones.svg',
+  hubShenzhen: '/images/hub-shenzhen.svg',   // Shenzhen skyline
+  hubFoshan: '/images/hub-foshan.svg',     // Foshan city
+  hubZhongshan: '/images/hub-zhongshan.svg',  // Zhongshan lights or city
+  hubYiwu: '/images/hub-yiwu.svg',       // Yiwu market or city
+  hubNingbo: '/images/hub-ningbo.svg',     // Ningbo container port
 };
 
 export const NAV_LINKS = [
