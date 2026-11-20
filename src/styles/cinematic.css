@@ -28,7 +28,7 @@ main, footer { position: relative; z-index: 2; }
 .cine__chap { min-height: 120vh; }
 .cine__chap--end { justify-content: flex-start; }
 .cine__copy { max-width: 640px; }
-.cine__h { font-size: clamp(54px, 9vw, 148px); line-height: .92; letter-spacing: -.045em; font-weight: 800; color: #fff; }
+.cine__h { font-size: clamp(54px, 6vw, 148px); line-height: .92; letter-spacing: -.045em; font-weight: 800; color: #fff; }
 .mask { display: block; overflow: hidden; padding-bottom: .08em; }
 .mask > span { display: block; }
 .cine__h .mask:last-child > span { color: #70D900; text-shadow: 0 0 60px rgba(112,217,0,.35); }

@@ -11,7 +11,7 @@ export default function CinematicHome() {
     <div className="cine">
       <section className="cine__sec cine__hero">
         <div className="cine__copy">
-          <h2 className="cine__h" style={{ fontSize: "98px" }}>
+          <h2 className="cine__h" >
             <span className="mask"><motion.span {...line(0)}>Bringing Tomorrow's</motion.span></span>
             <span className="mask"><motion.span {...line(1)}>Innovation Today</motion.span></span>
           </h2>
