@@ -32,7 +32,7 @@ main, footer { position: relative; z-index: 2; }
 .mask { display: block; overflow: hidden; padding-bottom: .08em; }
 .mask > span { display: block; }
 .cine__h .mask:last-child > span { color: #70D900; text-shadow: 0 0 60px rgba(112,217,0,.35); }
-.cine__p { margin-top: 28px; max-width: 460px; font-size: 18px; line-height: 1.6; color: #c6d0c8; }
+.cine__p { margin-top: 28px; max-width: 460px; font-size: 18px; line-height: 1.6; color: #ffff; }
 .cine__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
 .cine__cue { position: absolute; left: var(--gutter); bottom: 34px; display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); }
 .cine__cue i { width: 1px; height: 46px; background: linear-gradient(#70D900, transparent); animation: cue 1.8s ease-in-out infinite; transform-origin: top; }
@@ -44,6 +44,33 @@ main, footer { position: relative; z-index: 2; }
 .cine__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
 .cine__stats strong { display: block; font-size: 40px; line-height: 1; color: #70D900; letter-spacing: -.03em; }
 .cine__stats span { font-size: 13px; color: var(--muted); }
+
+
+/* new code starts here */
+
+/* Mobile: subtle background behind hero text only */
+@media (max-width: 768px) {
+  .cine__hero .cine__copy {
+    position: relative;
+    z-index: 5;
+    padding: 20px 0;
+
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.45) 75%,
+      transparent 100%
+    );
+  }
+
+  .cine__hero .cine__h,
+  .cine__hero .cine__p {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* new code ends here */
 
 /* Solid sections after the 3D story */
 .home__solid { position: relative; background: linear-gradient(#050805, #0a0f0a 40%, #050805); border-radius: 44px 44px 0 0; box-shadow: 0 -40px 80px rgba(0,0,0,.7); }
