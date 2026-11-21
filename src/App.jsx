@@ -11,8 +11,8 @@ import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Products from './pages/Products.jsx';
 import Services from './pages/Services.jsx';
-import Markets from './pages/Markets.jsx';
-import HowItWorks from './pages/HowItWorks.jsx';
+
+
 import Supplier from './pages/Supplier.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
@@ -35,8 +35,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/markets" element={<Markets />} />
-          <Route path="/how-it-works" element={<HowItWorks />} />
+        
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/franchise" element={<Franchise />} />
