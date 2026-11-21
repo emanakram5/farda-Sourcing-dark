@@ -1490,3 +1490,21 @@
 .fr-orb {
   box-shadow: inset -8px -10px 18px rgba(0, 0, 0, 0.35), 0 0 46px rgba(95, 178, 26, 0.45);
 }
+
+/* Fix Express Interest button click */
+.fr-cta {
+  position: relative;
+  isolation: isolate;
+}
+
+.fr-cta::before {
+  z-index: -1;
+  pointer-events: none;
+}
+
+.fr-cta .fr-btn {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}

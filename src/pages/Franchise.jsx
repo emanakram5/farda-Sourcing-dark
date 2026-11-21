@@ -246,7 +246,7 @@ const Franchise = () => {
               where customers see, try and buy the products of tomorrow.
             </p>
             <div className="fr-hero__actions">
-              <a href="#apply" className="fr-btn fr-btn--primary">
+              <a href="/contact" className="fr-btn fr-btn--primary">
                 <ClipboardCheck size={15} />
                 Express Interest
                 <ArrowRight size={15} />
@@ -460,7 +460,7 @@ const Franchise = () => {
             <p className="fr-cta__text">
               Partner with Farda and bring innovation closer to your customers.
             </p>
-            <a href="#apply" className="fr-btn fr-btn--primary fr-btn--lg">
+            <a href="/contact" className="fr-btn fr-btn--primary fr-btn--lg">
               Express Interest
               <ArrowRight size={15} />
             </a>
@@ -472,3 +472,4 @@ const Franchise = () => {
 }
 
 export default Franchise
+
