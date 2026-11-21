@@ -21,7 +21,7 @@ const RULES = {
 
 const INFO = [
   { icon: 'mail', label: 'Email', value: SITE.email },
-  { icon: 'phone', label: 'Phone / WhatsApp', value: SITE.phone },
+
   { icon: 'map-pin', label: 'Office', value: SITE.address },
   { icon: 'clock', label: 'Business Hours', value: SITE.hours },
 ];

@@ -3,7 +3,7 @@
 export const SITE = {
   name: 'Farda Sourcing',
   email: 'info@fardasourcing.com',
-  phone: '+92 331 1234567',
+
   address: 'Bahria Town Phase 7, Rawalpindi, Pakistan',
   hours: 'Mon - Sat: 8:00 AM - 5:00 PM',
 };
