@@ -16,7 +16,7 @@ export default function CinematicHome() {
             <span className="mask"><motion.span {...line(1)}>Innovation, Today</motion.span></span>
           </h2>
           <motion.p className="cine__p" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7, duration: 0.9, ease }}>
-            AI robotics, smart tech and industrial machines from verified factories, delivered by one partner from first quote to final shipment.
+            Futuristic products from verified factories, delivered by one partner from first quote to final shipment.
           </motion.p>
           <motion.div className="cine__cta" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 3, duration: 0.9 }}>
             <Link to="/products" className="pill pill--green">Explore products</Link>
