@@ -1,0 +1,70 @@
+﻿FARDA SOURCING - MAIN BRANCH DOCUMENTATION REPORT
+Prepared: 21 November 2026
+Repository: https://github.com/emanakram5/farda-Sourcing-dark
+Target branch: main
+Reviewed source baseline: 174732773e54bda0981f419af7be502b03639a11
+Baseline subject: Merge pull request #6 from emanakram5/eman/responsive
+
+PURPOSE
+Create repository agent instructions and a project report describing the actual
+main branch, and publish only these two documentation files to main as requested.
+
+FILES IN THIS UPDATE
+AGENTS.md
+- Repository-wide guidance, source map, commands, and validation expectations.
+- Git rules allow explicitly authorized work on main; no refin/suh-only rule.
+- Describes the animated main architecture and existing integration limits.
+
+report.txt
+- This report of the main baseline, documentation scope, and verification limits.
+
+MAIN BRANCH SOURCE FINDINGS
+- React 18 and React Router 6 application built with Vite 5 and plain CSS.
+- Dependencies include Framer Motion, Three.js, and Lucide React.
+- App.jsx mounts Scene3D, Preloader, ScrollToTop, ScrollReveal, navigation,
+  route content, and the footer.
+- Home includes cinematic content, animated counters, and viewport reveals.
+- Products includes category filtering, a rotating showroom driven by scroll,
+  previous/next controls, and quote links.
+- Services presents an animated shipment route and service stations.
+- Process and supplier criteria use scroll-driven vertical presentations.
+- The navbar changes appearance and visibility during scrolling and supports
+  a mobile menu.
+- Global styles import variables.css, base.css, motion.css, and cinematic.css.
+  There is no responsive.css in the reviewed main baseline.
+- Routes include Home, About, Products, Services, Markets, How It Works,
+  Supplier, Contact, Franchise, and a fallback 404.
+
+EXISTING INTEGRATION LIMITS
+- Inquiry submission in src/services/api.js logs the submitted data and returns
+  a delayed resolved promise; it does not deliver a backend request.
+- The newsletter validates locally and displays a success message; its external
+  provider connection remains a TODO.
+
+SCOPE AND BRANCH SEPARATION
+This publication adds documentation only. It does not include the uncommitted
+website animation or responsive-layout changes from the user's refin/suh
+checkout. Those changes remain separate for user review.
+The report replaces branch-specific descriptions with main-source findings.
+Build/browser results from the earlier refin/suh work do not verify main and
+are intentionally not presented here as main-branch test results.
+
+VERIFICATION FOR THIS DOCUMENTATION UPDATE
+- Fetched origin/main and inspected its latest source baseline.
+- Checked package scripts, routes, stylesheet imports, active presentation
+  components, navigation, and inquiry/newsletter implementations.
+- Prepared the update in an isolated checkout based on origin/main, preserving
+  the user's active refin/suh checkout and its uncommitted website changes.
+- Verified that the staged change contains only AGENTS.md and report.txt;
+  git diff --cached --check passed.
+- No application source, dependency manifest, or lockfile changes are included.
+- No application build or browser tests were run for this documentation-only
+  update. No physical-device, Safari, or production-runtime testing is claimed.
+
+LOCAL DEVELOPMENT
+Install dependencies: npm ci --no-audit --no-fund
+Run development server: npm run dev -- --host 0.0.0.0
+Build: npm run build
+Preview production output: npm run preview
+On Windows PowerShell use npm.cmd if npm.ps1 is blocked by execution policy.
+Use the actual Vite output for preview URLs and ports.
