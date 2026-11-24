@@ -17,7 +17,7 @@ Use the URL printed by Vite. On Windows, use `npm.cmd` if PowerShell blocks `npm
 
 - `/home`: animated cubes, counting statistics and sourcing process.
 - `/who-we-are`: company story, YC Solutions collaboration, purpose and values.
-- `/products`: six clickable products with accessible detail popups at `/products/:slug`.
+- `/products`: six clickable products with dedicated detail pages at `/products/:slug`.
 - `/services`: supplier partnership, six services and franchise opportunities.
 - `/our-mission`: franchise content; `/franchise`, `/supplier` and `/markets` also remain available.
 - `/contact`: dedicated Contact Us page with validated submission to a server-side SMTP endpoint. SMTP setup is required before messages can be delivered.

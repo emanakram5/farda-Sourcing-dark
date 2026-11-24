@@ -4,6 +4,7 @@ import Icon from '../components/Icon.jsx';
 import Img from '../components/Img.jsx';
 import { ABOUT } from '../data/siteData.js';
 import './About.css';
+import CompanyGroup from '../components/CompanyGroup.jsx';
 
 /* ---------- Images: these exact files exist in /public/images ---------- */
 const PICS = {
@@ -128,23 +129,9 @@ export default function About() {
         </div>
       </section>
 
-      <section className="ab-sec ab-collaboration" aria-labelledby="yc-collaboration-title">
-        <div className="ab-wrap">
-          <div className="ab-label"><b>02</b><span>Our collaboration</span><i /></div>
-          <h2 id="yc-collaboration-title">In Collaboration with YC Solutions</h2>
-          <div className="ab-collaboration__grid">
-            <div className="ab-collaboration__logo">
-              <img src="/images/logo-dark-1.png" alt="YC Solutions ? Your Cloud Solutions" loading="lazy" />
-            </div>
-            <div className="ab-collaboration__text">
-              <p>YC Solutions Pvt. Ltd, with its registered head office located at Rupyal Plaza, Chandni Chowk, Rawalpindi, Pakistan, has been operating since 2011. The prime business focus of YC Solutions is online interactive teaching. It provides quality education at a lower cost.</p>
-              <p>The motto is very simple: quality education for all demographics, irrespective of gender, age, nationality and disability. Both joint venture partners have strived to increase profitability and introduce new products and services over the course of time.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CompanyGroup />
 
-      {/* ---------- 02 MISSION + VISION ---------- */}
+      {/* ---------- MISSION + VISION ---------- */}
       <section className="ab-sec ab-sec--alt">
         <div className="ab-wrap">
           <Label n="03">Purpose</Label>

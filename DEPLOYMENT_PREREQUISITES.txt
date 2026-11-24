@@ -53,7 +53,8 @@ respond HTTP 200. Configure a real server 404 strategy if that is required.
 4. SEO AND STATIC FILES
 The build creates HTML for regular routes and all six /products/:slug URLs,
 with unique titles/descriptions, canonical tags, social metadata and product
-structured metadata. Product HTML also includes a no-JavaScript text fallback.
+structured metadata. Product HTML contains the full overview without requiring JavaScript. Who We
+Are also includes company backgrounds in its initial HTML.
 The generated sitemap lists canonical routes and excludes aliases; robots.txt
 references https://fardasourcing.com/sitemap.xml. Ensure both are publicly
 accessible after deployment, then submit the sitemap to the chosen search
@@ -80,7 +81,7 @@ production access or self-host if required.
 - Open all six product URLs directly; inspect metadata without relying on JS.
 - Verify sitemap.xml, robots.txt, image requests and missing-asset 404s.
 - Check phone/tablet/laptop/desktop and short landscape, overflow and text.
-- Test full product card clicks, cross/Escape dismissal and focus restoration.
+- Test full product card clicks, dedicated pages, breadcrumbs and return links.
 - Test mobile navigation, reduced motion, final counter values, inquiry presets
   and validation; confirm actual inbox receipt after configuring SMTP.
 - Cache hashed assets long-term; revalidate HTML and unversioned assets.
