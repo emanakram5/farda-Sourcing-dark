@@ -141,8 +141,8 @@ function Cubes() {
             <stop offset="1" stopColor="#cfd6cb" />
           </linearGradient>
           <linearGradient id="lime" x2="1" y2="1">
-            <stop stopColor="#d4ff54" />
-            <stop offset="1" stopColor="#aaff00" />
+            <stop stopColor="#93df52" />
+            <stop offset="1" stopColor="#70d900" />
           </linearGradient>
           <filter id="glow">
             <feGaussianBlur stdDeviation="22" />
@@ -153,7 +153,7 @@ function Cubes() {
           cy="450"
           rx="170"
           ry="35"
-          fill="#aaff00"
+          fill="#70d900"
           opacity=".22"
           filter="url(#glow)"
         />
@@ -170,7 +170,7 @@ function Cubes() {
             key={i}
             className="floating-cube"
             style={{ animationDelay: `${i * -0.7}s` }}
-            stroke={green ? "#b6ee36" : "#d6ded1"}
+            stroke={green ? "#7bcf27" : "#d6ded1"}
             strokeWidth="1.5"
             strokeLinejoin="round"
           >
@@ -180,11 +180,11 @@ function Cubes() {
             />
             <path
               d={`M${x - s} ${y} l${s} ${s * 0.5} v${s} l-${s} -${s * 0.5} Z`}
-              fill={green ? "#a7ec00" : "#c9d0c3"}
+              fill={green ? "#61bd00" : "#c9d0c3"}
             />
             <path
               d={`M${x} ${y + s * 0.5} l${s} -${s * 0.5} v${s} l-${s} ${s * 0.5} Z`}
-              fill={green ? "#bcff00" : "#aebfa2"}
+              fill={green ? "#70d900" : "#aebfa2"}
             />
             {i === 3 && <g transform="matrix(.5 .25 -.5 .25 300 74)" aria-hidden="true"><g className="cube-monogram"><LogoMark /></g></g>}
           </g>
