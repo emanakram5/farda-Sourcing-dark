@@ -121,6 +121,16 @@ export const PRODUCTS = [
   { slug: 'ai-smart-mirrors', name: 'AI Smart Mirrors', image: '/images/ai-smart-mirror.jpg', imageAlt: 'Freestanding AI smart mirror for commercial use', description: 'AI smart mirrors for commercial use.' },
 ];
 
+const RELATED_PRODUCT_SLUGS = {
+  'robot-vacuum': ['smart-home-security-package', 'ai-smart-massage-chair', 'ai-smart-mirrors'],
+  'smart-home-security-package': ['vehicle-monitoring-package', 'robot-vacuum', 'ai-smart-mirrors'],
+  'exoskeleton-walking-assistant': ['ai-smart-massage-chair', 'ai-smart-mirrors', 'robot-vacuum'],
+  'vehicle-monitoring-package': ['smart-home-security-package', 'ai-smart-mirrors', 'robot-vacuum'],
+  'ai-smart-massage-chair': ['exoskeleton-walking-assistant', 'robot-vacuum', 'ai-smart-mirrors'],
+  'ai-smart-mirrors': ['smart-home-security-package', 'ai-smart-massage-chair', 'robot-vacuum'],
+};
+export const getRelatedProducts = slug => (RELATED_PRODUCT_SLUGS[slug] || []).map(relatedSlug => PRODUCTS.find(product => product.slug === relatedSlug)).filter(Boolean);
+
 export const SERVICES = [
   { icon: 'search', title: 'Supplier Sourcing', text: 'Find and connect with verified manufacturers.' },
   { icon: 'cart', title: 'Product Procurement', text: 'Handle negotiations, sampling and ordering.' },

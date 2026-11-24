@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { getRelatedProducts } from '../data/siteData.js';
+import Icon from '../components/Icon.jsx';
 
 export default function ProductDetail({ product, details }) {
   return <article className="product-detail section-space">
@@ -11,8 +13,12 @@ export default function ProductDetail({ product, details }) {
         {details.paragraphs.map(text => <p key={text}>{text}</p>)}
         {product.includes && <section><h2>Package includes</h2><ul>{product.includes.map(item => <li key={item}>{item}</li>)}</ul></section>}
         <section><h2>What to consider</h2><ul>{details.considerations.map(item => <li key={item}>{item}</li>)}</ul></section>
-        <Link className="text-link" to="/products">Browse all products</Link>
       </div>
     </div>
+    <section className="related-products" aria-labelledby="related-products-title">
+      <header><span className="kicker">KEEP EXPLORING</span><h2 id="related-products-title">Related products</h2><p>Discover more technology for everyday life and business.</p></header>
+      <ul className="related-products__bar">{getRelatedProducts(product.slug).map(item => <li key={item.slug}><Link className="related-product" to={'/products/' + item.slug}><img src={item.image} alt={item.imageAlt || item.name} loading="lazy" width="400" height="300" /><div><h3>{item.name}</h3><Icon name="arrow-right" size={22} /></div></Link></li>)}</ul>
+      <div className="related-products__browse"><Link className="action" to="/products">Browse All Products <Icon name="arrow-right" size={20} /></Link></div>
+    </section>
   </article>;
 }
