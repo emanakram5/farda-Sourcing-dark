@@ -169,3 +169,22 @@
 .product-detail__body section { margin-top: 28px; }
 .product-detail__body ul { list-style: disc; padding-left: 22px; margin-bottom: 28px; color: #d0d5d1; }
 @media (max-width: 800px) { .product-detail__grid { grid-template-columns: 1fr; gap: 24px; } .product-detail { margin-top: 36px; } .product-detail__media img { max-height: 460px; } }
+/* Detail pages: image stays in view; related cards form a browsable bar. */
+.product-detail__heading { padding-bottom: 28px; border-bottom: 1px solid #ffffff26; }
+.product-detail__heading h1 { max-width: 19ch; }
+.related-products { margin-top: clamp(56px, 7vw, 100px); padding-top: 32px; border-top: 1px solid #b4ff0040; }
+.related-products header { margin-bottom: 28px; }
+.related-products h2 { font-size: clamp(28px, 3.5vw, 42px); margin: 12px 0 16px; }
+.related-products__bar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 6px; margin: 0 -6px; }
+.related-products__bar li { min-width: 0; }
+.related-product { display: flex; flex-direction: column; height: 100%; overflow: hidden; border-radius: 18px; border: 1px solid #ffffff36; background: linear-gradient(135deg, #303c32, #1d2a21); transition: transform .2s, border-color .2s; }
+.related-product img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; background: #c8cbc7; }
+.related-product > div { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px; }
+.related-product h3 { font-size: 21px; }
+.related-product .icon { flex-shrink: 0; color: var(--accent); }
+.related-product:hover { transform: scale(.98); border-color: var(--accent); }
+.related-products__browse { display: flex; justify-content: center; margin-top: 36px; }
+.related-products__browse .action { gap: 14px; }
+@media (min-width: 801px) { .product-detail__media { position: sticky; top: 120px; } }
+@media (max-width: 700px) { .related-products__bar { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; padding-bottom: 18px; scrollbar-color: #8cbf34 #28352c; } .related-products__bar li { flex: 0 0 83%; scroll-snap-align: start; } .related-product > div { padding: 18px; } }
+@media (prefers-reduced-motion: reduce) { .related-product:hover { transform: none; } }
