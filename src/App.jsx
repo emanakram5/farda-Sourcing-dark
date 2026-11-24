@@ -539,9 +539,6 @@ export default function App() {
         <div>
           <h2>Contact</h2>
           <a href="mailto:info@fardasourcing.com">info@fardasourcing.com</a>
-          <Link to="/contact">Contact Us</Link>
-          <Link to="/supplier">Become a supplier</Link>
-          <Link to="/franchise">Franchise opportunities</Link>
           <p>
             Bahria Town Phase 7<br />
             Rawalpindi, Pakistan
