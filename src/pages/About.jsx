@@ -128,10 +128,26 @@ export default function About() {
         </div>
       </section>
 
+      <section className="ab-sec ab-collaboration" aria-labelledby="yc-collaboration-title">
+        <div className="ab-wrap">
+          <div className="ab-label"><b>02</b><span>Our collaboration</span><i /></div>
+          <h2 id="yc-collaboration-title">In Collaboration with YC Solutions</h2>
+          <div className="ab-collaboration__grid">
+            <div className="ab-collaboration__logo">
+              <img src="/images/logo-dark-1.png" alt="YC Solutions ? Your Cloud Solutions" loading="lazy" />
+            </div>
+            <div className="ab-collaboration__text">
+              <p>YC Solutions Pvt. Ltd, with its registered head office located at Rupyal Plaza, Chandni Chowk, Rawalpindi, Pakistan, has been operating since 2011. The prime business focus of YC Solutions is online interactive teaching. It provides quality education at a lower cost.</p>
+              <p>The motto is very simple: quality education for all demographics, irrespective of gender, age, nationality and disability. Both joint venture partners have strived to increase profitability and introduce new products and services over the course of time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- 02 MISSION + VISION ---------- */}
       <section className="ab-sec ab-sec--alt">
         <div className="ab-wrap">
-          <Label n="02">Purpose</Label>
+          <Label n="03">Purpose</Label>
           <div className="ab-duo">
             <article className="ab-card">
               <Pic src={PICS.mission} alt="Robotic arm on a production line" tag="Mission" ratio="16 / 10" />
@@ -156,7 +172,7 @@ export default function About() {
       {/* ---------- 03 VALUES ---------- */}
       <section className="ab-sec">
         <div className="ab-wrap">
-          <Label n="03">What we stand for</Label>
+          <Label n="04">What we stand for</Label>
           <div className="ab-split ab-split--rev">
             <div className="ab-text">
               <Words text="Our Values" />

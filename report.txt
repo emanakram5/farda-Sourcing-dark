@@ -1,70 +1,106 @@
-﻿FARDA SOURCING - MAIN BRANCH DOCUMENTATION REPORT
-Prepared: 21 November 2026
+﻿FARDA SOURCING - REDESIGN AND CLEANUP REPORT
+Updated: 24 November 2026
 Repository: https://github.com/emanakram5/farda-Sourcing-dark
-Target branch: main
-Reviewed source baseline: 174732773e54bda0981f419af7be502b03639a11
-Baseline subject: Merge pull request #6 from emanakram5/eman/responsive
+Working branch: redesign/reference-website
+Publication target: main, explicitly authorized on 24 November 2026.
+Deployment and SMTP activation remain separate from Git publication.
 
-PURPOSE
-Create repository agent instructions and a project report describing the actual
-main branch, and publish only these two documentation files to main as requested.
+CURRENT SITE
+- React 18, React Router 6, Vite 5, Lucide React and plain CSS.
+- Charcoal/green theme with muted gradients, visible navigation boundaries,
+  mobile menu and accessible focus states.
+- Home: animated logo cubes, statistics counting to 500+, 15+, 20+, 100%,
+  sourcing process and product previews. Reduced-motion behavior is included.
+- Who We Are: original About content, images, mission/vision/values and the
+  YC Solutions collaboration section using logo-dark-1.png.
+- Products: six full clickable cards with a receding hover effect, responsive
+  images and detailed modal overviews. No categories or per-card quote links.
+- All six products have unique /products/:slug URLs. Escape, cross, backdrop
+  and Back to products close the overview; card focus is restored.
+- Services: supplier introduction/benefits first, six services in the middle,
+  then franchise overview. No service-card inquiry links or partner animation.
+- Our Mission reuses Franchise content without the brochure request button.
+- Existing /supplier, /franchise and /markets remain supported.
+- /, /about and /contact remain aliases; /how-it-works redirects to home.
+- Contact validates input and opens a mailto draft. It does not send inquiries.
+- Builds generate regular route HTML, six detail pages, canonical/social tags,
+  product structured metadata, a 15-URL sitemap and robots.txt. Canonical origin
+  is https://fardasourcing.com. No live SEO/indexing result is claimed.
 
-FILES IN THIS UPDATE
-AGENTS.md
-- Repository-wide guidance, source map, commands, and validation expectations.
-- Git rules allow explicitly authorized work on main; no refin/suh-only rule.
-- Describes the animated main architecture and existing integration limits.
+CLEANUP IN THIS UPDATE
+An import graph was traced from src/main.jsx through active local JS/CSS
+imports, excluding comments. Removed 25 unreachable source files:
+- CinematicHome, Scene3D and Preloader components.
+- Old home presentation components/styles (HomeSections, Motion, RoboCanvas,
+  StoryHero and Home.css).
+- Superseded Navbar/Footer components/styles and scroll helpers.
+- Old Home, Products, Services and NotFound page implementations/styles,
+  unused AboutMedia.css, cinematic.css and motion.css.
+- Unused API placeholder and empty src/assets file.
+Removed unused three and framer-motion dependencies; npm updated both the
+manifest and lockfile and removed five installed packages in total.
+Active React, router, icon and build dependencies remain unchanged.
+Retained the public image library, uploaded originals, active source, build
+script, hosting configuration and running preview resources.
+No destructive Git commands, branch switching, commits, pushes or main changes.
+Existing redesign work and the original refin/suh checkout were preserved.
 
-report.txt
-- This report of the main baseline, documentation scope, and verification limits.
+DOCUMENTATION UPDATED
+- README.md: concise setup, current routes, content locations and deployment.
+- AGENTS.md: current architecture, behavior, Git rules and verification guidance.
+- DEPLOYMENT_PREREQUISITES.txt: static build/hosting, route HTML precedence,
+  canonical domain, sitemap, contact limitations and release checks.
+- report.txt: this current-state report, replacing outdated main-only findings.
 
-MAIN BRANCH SOURCE FINDINGS
-- React 18 and React Router 6 application built with Vite 5 and plain CSS.
-- Dependencies include Framer Motion, Three.js, and Lucide React.
-- App.jsx mounts Scene3D, Preloader, ScrollToTop, ScrollReveal, navigation,
-  route content, and the footer.
-- Home includes cinematic content, animated counters, and viewport reveals.
-- Products includes category filtering, a rotating showroom driven by scroll,
-  previous/next controls, and quote links.
-- Services presents an animated shipment route and service stations.
-- Process and supplier criteria use scroll-driven vertical presentations.
-- The navbar changes appearance and visibility during scrolling and supports
-  a mobile menu.
-- Global styles import variables.css, base.css, motion.css, and cinematic.css.
-  There is no responsive.css in the reviewed main baseline.
-- Routes include Home, About, Products, Services, Markets, How It Works,
-  Supplier, Contact, Franchise, and a fallback 404.
+VERIFICATION AFTER CLEANUP
+- Re-ran the source reachability audit: no unreachable files remain under src.
+- npm run build passed after dependency removal; generated CSS/JS artifact names
+  match the pre-cleanup build, consistent with deleting inactive code only.
+- Production artifact served with Vite preview on http://localhost:5180/.
+- Chromium checks at 390px and 1366px: all nine main pages rendered without
+  page errors or horizontal overflow.
+- All six product overviews opened and closed successfully.
+- Supplier inquiry preset, required-field validation and mobile menu navigation
+  passed against the cleaned production output.
+- Verified generated canonical/structured metadata for all six product pages
+  and 15 canonical sitemap entries.
+- git diff --check run before handoff.
+Toolchain: Node v26.13.0, npm 11.20.0; Vite v5.4.21.
+No physical-device, Safari, public hosting, email delivery or production DNS
+verification was performed. Earlier viewport checks are not presented as new
+post-cleanup tests.
 
-EXISTING INTEGRATION LIMITS
-- Inquiry submission in src/services/api.js logs the submitted data and returns
-  a delayed resolved promise; it does not deliver a backend request.
-- The newsletter validates locally and displays a success message; its external
-  provider connection remains a TODO.
+REMAINING DEPLOYMENT WORK
+Approve a release commit, configure hosting/DNS/HTTPS, publish complete dist,
+verify production routes/metadata/assets and submit the sitemap. Contact email
+must be sent by the visitor unless a delivery backend is implemented later.
 
-SCOPE AND BRANCH SEPARATION
-This publication adds documentation only. It does not include the uncommitted
-website animation or responsive-layout changes from the user's refin/suh
-checkout. Those changes remain separate for user review.
-The report replaces branch-specific descriptions with main-source findings.
-Build/browser results from the earlier refin/suh work do not verify main and
-are intentionally not presented here as main-branch test results.
+CONTACT US UPDATE - 24 NOVEMBER 2026
+Navigation now links to dedicated /contact; /get-a-quote remains an alias with
+inquiry presets. Canonical metadata and sitemap now use /contact.
+Contact submits to a self-hosted Node.js SMTP API (server/contact.mjs).
+Nodemailer added; .env.example and server/README.md document configuration.
+API validates and bounds input, restricts origins, rate-limits attempts, uses a
+honeypot and fixed recipient, and reports delivery failures without clearing
+the form. No visitor data or credentials are logged.
+Seven backend tests passed using simulated SMTP; production build passed.
+Earlier descriptions of mailto-only behavior above are superseded by this update.
+SMTP is not configured; no real email or public deployment has been verified.
+Contact UI verification: Chromium checked canonical /contact navigation,
+/get-a-quote alias/preset, required fields, simulated 503/error and 200/success
+responses, input retention, disabled pending submission and 390px layout.
+No email was sent by these tests. SMTP setup and real inbox testing remain.
+CONTACT FORM SIMPLIFICATION
+Inquiry Type removed from the form, payload and backend requirements.
+Only name, email and message are required; company/country remain optional.
+Product message prefilling remains. Seven backend tests and production build
+passed. Mobile browser test confirmed submission without inquiry using a
+simulated successful API response. SMTP is still pending configuration.
 
-VERIFICATION FOR THIS DOCUMENTATION UPDATE
-- Fetched origin/main and inspected its latest source baseline.
-- Checked package scripts, routes, stylesheet imports, active presentation
-  components, navigation, and inquiry/newsletter implementations.
-- Prepared the update in an isolated checkout based on origin/main, preserving
-  the user's active refin/suh checkout and its uncommitted website changes.
-- Verified that the staged change contains only AGENTS.md and report.txt;
-  git diff --cached --check passed.
-- No application source, dependency manifest, or lockfile changes are included.
-- No application build or browser tests were run for this documentation-only
-  update. No physical-device, Safari, or production-runtime testing is claimed.
-
-LOCAL DEVELOPMENT
-Install dependencies: npm ci --no-audit --no-fund
-Run development server: npm run dev -- --host 0.0.0.0
-Build: npm run build
-Preview production output: npm run preview
-On Windows PowerShell use npm.cmd if npm.ps1 is blocked by execution policy.
-Use the actual Vite output for preview URLs and ports.
+MAIN PUBLICATION
+User requested publication of the complete redesign and cleanup to main.
+Latest origin/main was fetched before integration. Build and SMTP unit tests
+are run before committing. No environment credentials, node_modules, dist or
+local test output are included. SMTP remains unconfigured; live mail delivery
+and public deployment are not claimed. Final commit and remote verification
+are reported in the task handoff and repository history.

@@ -1,0 +1,173 @@
+/* White, charcoal and green: brighter surfaces within the dark brand theme. */
+.redesign {
+  --muted: #d0d5d1;
+  --surface: #202823;
+  --border: #ffffff30;
+  background:
+    radial-gradient(ellipse 850px 650px at 83% 260px, #ffffff22, transparent 75%),
+    radial-gradient(ellipse 700px 600px at 5% 1100px, #b4ff0010, transparent 75%),
+    #101613;
+}
+.redesign main:has(.hiw) { background: transparent; }
+.redesign .site-header,
+.redesign .site-header.is-scrolled {
+  background: linear-gradient(120deg, #303a33f5, #151e18fa);
+  border-color: #ffffff70;
+  box-shadow: 0 12px 32px #0004, inset 0 1px 0 #ffffff24;
+}
+.redesign .site-header:hover,
+.redesign .site-header:focus-within { border-color: #b4ff00b3; }
+.redesign .site-header nav.open { background: #242e27; }
+.redesign .glass {
+  background: linear-gradient(135deg, #303a33, #1b241e);
+  border-color: #ffffff38;
+  box-shadow: inset 0 1px 0 #ffffff12, 0 16px 36px #0002;
+}
+.redesign .cube-scene {
+  background: radial-gradient(ellipse at 52% 48%, #ffffff18, transparent 69%);
+  border-radius: 50%;
+}
+.redesign .stats,
+.redesign .closing {
+  background: linear-gradient(120deg, #354039 0%, #29352d 65%, #304027 100%);
+  border-color: #ffffff38;
+  color: #f1f4ed;
+  box-shadow: 0 18px 50px #0003;
+}
+.redesign .stats h2,
+.redesign .stats strong,
+.redesign .closing h2 { color: #f1f4ed; }
+.redesign .stats li > span,
+.redesign .closing p { color: #c7d0c5; }
+.redesign .closing .kicker { color: #b4ff00; }
+.redesign .product-card > div { background: linear-gradient(145deg, #ffffff09, transparent); }
+.redesign .filters button { background: #ffffff0d; border-color: #ffffff55; }
+.redesign .filters button:hover { border-color: var(--accent); }
+.redesign .filters button[aria-pressed="true"] { background: var(--accent); }
+.redesign .hiw {
+  background: radial-gradient(ellipse at 65% 40%, #3b4838, #1a251c 58%, #121b15);
+  border: 1px solid #ffffff30;
+}
+.redesign .process-card:nth-child(3) {
+  background: linear-gradient(135deg, #3c4c29, #26331f);
+  border-color: #b4ff0070;
+}
+.redesign .ab { --bg: #101613; --bg2: #222c24; --line: #ffffff30; background: var(--bg); }
+.redesign .ab-hero {
+  background: radial-gradient(ellipse at top right, #ffffff1c, transparent 65%), var(--bg);
+}
+.redesign .ab-sec--alt {
+  background: linear-gradient(130deg, #303b33, #253128 65%, #2c3a26);
+  --line: #ffffff30;
+}
+.redesign .ab-sec--alt .ab-label,
+.redesign .ab-sec--alt h3 { color: #f1f4ed; }
+.redesign .ab-sec--alt p { color: #c7d0c5; }
+.redesign .ab-sec--alt .ab-label b { color: #b4ff00; }
+.redesign .ab-sec--alt .ab-card { background: #ffffff08; border-color: #ffffff30; }
+.redesign .ab-sec--alt .ab-ico { background: #152411; }
+.redesign .ab-cta { background: linear-gradient(135deg, #2d3830, #142019); }
+.redesign .ab-val,
+.redesign .ab-chip { background: #ffffff09; border-color: #ffffff38; }
+.redesign .contact__form-card {
+  --black: #f1f4ed;
+  --muted: #c7d0c5;
+  --surface: #18231c;
+  --border: #ffffff40;
+  background: linear-gradient(140deg, #303b33, #222e25);
+  color: #f1f4ed;
+  border-color: #ffffff38;
+  box-shadow: 0 20px 50px #0003;
+}
+.redesign .contact__form-card h2,
+.redesign .contact__form-card h3,
+.redesign .contact__form-card label { color: #f1f4ed; }
+.redesign .contact__form-card p { color: #c7d0c5; }
+.redesign .contact__form-card input::placeholder,
+.redesign .contact__form-card textarea::placeholder,
+.redesign .contact__form-card select.is-placeholder { color: #aebbad; }
+.redesign .contact__form-card .contact__error { color: #ffb3a8; }
+.redesign .contact__form-card :focus-visible { outline-color: #b4ff00; }
+.redesign .fr-page { --fr-bg: #18211b; }
+.redesign .supplier { background: radial-gradient(ellipse at top right, #ffffff14, transparent 60%); }
+.redesign .site-footer {
+  background: linear-gradient(160deg, #ffffff10, #ffffff03);
+  border-top-color: #ffffff66;
+  border-radius: 22px 22px 0 0;
+  padding-inline: clamp(16px, 2vw, 28px);
+}
+.redesign .site-footer small { color: #c0c9c0; }
+.redesign .ab-sec--alt .ab-pic { box-shadow: 0 12px 26px #182b201a; }
+.redesign .fr-page { margin-inline: 0; }
+
+.redesign .stats strong { color: #b4ff00; font-variant-numeric: tabular-nums; }
+
+/* Supplier content shares the Services page's readable, static layout. */
+.supplier-services .split { margin-bottom: 36px; }
+.supplier-benefits-title { font-size: 26px; margin-bottom: 22px; }
+.supplier-benefits-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; list-style: none; padding: 0; }
+.supplier-benefits-grid li { display: flex; flex-direction: column; gap: 20px; padding: 24px; font-size: 17px; }
+.supplier-benefits-grid .icon { color: var(--accent); }
+.service-partnership { padding: clamp(24px, 5vw, 60px); margin-bottom: 70px; }
+.service-partnership > div { max-width: 900px; }
+.service-partnership h2 { font-size: clamp(28px, 3.5vw, 44px); margin: 16px 0 24px; }
+.service-partnership p { margin-bottom: 16px; }
+@media (max-width: 1000px) { .supplier-benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .supplier-benefits-grid { grid-template-columns: 1fr; } .supplier-benefits-grid li { flex-direction: row; align-items: center; } .supplier-benefits-grid .icon { flex-shrink: 0; } }
+
+.supplier-services-first { margin-top: 60px; }
+.supplier-services-first h1 { font-size: clamp(36px, 4.8vw, 60px); margin: 16px 0 24px; }
+.services-section-heading { padding-top: 0; }
+.services-section-heading h2 { font-size: clamp(32px, 4vw, 52px); margin: 18px 0 24px; }
+.services-offering .service-card h3 { font-size: 26px; margin: 25px 0 16px; }
+.services-offering .service-card p { margin-bottom: 0; }
+@media (max-width: 600px) { .supplier-services-first { margin-top: 36px; } }
+
+.ab-collaboration { background: linear-gradient(135deg, #303b33, #202c24); }
+.redesign .ab-collaboration h2 { font-size: clamp(28px, 3.5vw, 44px); max-width: 24ch; margin-bottom: 36px; }
+.ab-collaboration__grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); align-items: center; gap: clamp(28px, 5vw, 70px); }
+.ab-collaboration__logo { background: #e0e4df; padding: clamp(20px, 3vw, 38px); border-radius: 18px; border: 1px solid #ffffff40; }
+.ab-collaboration__logo img { display: block; width: 100%; height: auto; object-fit: contain; }
+.ab-collaboration__text p + p { margin-top: 18px; }
+@media (max-width: 699px) { .ab-collaboration__grid { grid-template-columns: 1fr; } .ab-collaboration__logo { width: 100%; max-width: 400px; margin-inline: auto; } }
+
+.product-image-placeholder { height: 245px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: radial-gradient(ellipse at center, #ffffff0c, transparent 75%), #1d2921; color: #bbc8b8; border-bottom: 1px solid #ffffff20; }
+.product-image-placeholder .icon { color: #9aae8b; }
+.product-card > div { display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
+.product-card { display: flex; flex-direction: column; }
+.product-card > a { display: block; }
+.product-card .product-description { margin: 0 0 24px; }
+.product-card .product-includes-label { font-size: 14px; margin: 0 0 8px; }
+.product-includes { list-style: disc; padding-left: 20px; margin-bottom: 24px; color: #d0d5d1; }
+.product-card .text-link { margin-top: auto; }
+@media (max-width: 600px) { .product-image-placeholder { height: 240px; } }
+.product-dialog { padding: 0; width: min(760px, calc(100% - 32px)); max-height: calc(100dvh - 48px); margin: auto; border: 1px solid #ffffff55; border-radius: 22px; background: linear-gradient(135deg, #303b33, #19251e); color: #f1f4ed; box-shadow: 0 24px 90px #0008; overflow: auto; overscroll-behavior: contain; }
+.product-dialog::backdrop { background: #080f0bce; backdrop-filter: blur(5px); }
+.product-dialog__content { position: relative; padding: clamp(24px, 5vw, 44px); }
+.product-dialog__close { position: absolute; right: 12px; top: 12px; width: 44px; height: 44px; border: 1px solid #ffffff55; border-radius: 50%; color: #fff; background: #15221a; font-size: 28px; }
+.product-dialog h2 { font-size: clamp(28px, 4vw, 38px); margin: 16px 24px 24px 0; }
+.product-dialog h3 { margin: 24px 0 12px; font-size: 21px; }
+.product-dialog p { margin-bottom: 16px; }
+.product-dialog ul { list-style: disc; padding-left: 22px; color: #d0d5d1; margin-bottom: 28px; }
+.product-dialog__image { width: 100%; max-height: 280px; object-fit: cover; border-radius: 14px; margin-bottom: 24px; }
+.product-dialog button { cursor: pointer; }
+.product-dialog button:focus-visible { outline: 2px solid #b4ff00; outline-offset: 3px; }
+/* Keep the complete product in view across portrait and landscape screens. */
+.redesign .product-card > a { overflow: hidden; background: #c8cbc7; }
+.redesign .product-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; object-position: center; background: #c8cbc7; }
+.product-dialog .product-dialog__image { display: block; width: 100%; height: min(50dvh, 440px); max-height: none; object-fit: contain; object-position: center; background: #c8cbc7; }
+@media (max-height: 500px) { .product-dialog .product-dialog__image { height: 65dvh; } }
+
+/* Whole-card navigation works with a pointer, touch or the keyboard. */
+.redesign .product-card { position: relative; color: inherit; text-decoration: none; cursor: pointer; transform: perspective(900px) translateZ(0); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.redesign .product-card > div { padding-bottom: 24px; }
+.redesign .product-card .product-description,
+.redesign .product-card .product-includes { margin-bottom: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .redesign .product-card:hover { transform: perspective(900px) translateZ(-28px); border-color: #b4ff0080; box-shadow: inset 0 1px 0 #ffffff16, 0 5px 14px #0004; }
+}
+.redesign .product-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-color: var(--accent); }
+.redesign .product-card:active { transform: perspective(900px) translateZ(-16px); }
+.product-dialog__close { display: grid; place-items: center; z-index: 2; }
+.product-dialog__close:hover { color: #b4ff00; border-color: #b4ff00; background: #273c28; }
+@media (prefers-reduced-motion: reduce) { .redesign .product-card:hover, .redesign .product-card:active { transform: none; } }

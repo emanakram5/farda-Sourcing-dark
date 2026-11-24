@@ -114,7 +114,7 @@ const HeroScene = () => (
   </div>
 )
 
-const Franchise = () => {
+const Franchise = ({ hideBrochure = false }) => {
   const rootRef = useRef(null)
 
   // Turn on the animation layer before first paint
@@ -220,7 +220,7 @@ const Franchise = () => {
   }, [])
 
   return (
-    <main className="fr-page" ref={rootRef}>
+    <article className="fr-page" ref={rootRef}>
       <div className="fr-progress" aria-hidden="true" />
 
       {/* ===== HERO ===== */}
@@ -246,15 +246,15 @@ const Franchise = () => {
               where customers see, try and buy the products of tomorrow.
             </p>
             <div className="fr-hero__actions">
-              <a href="/contact" className="fr-btn fr-btn--primary">
+              <a href="/contact?inquiry=Franchise%20Partnership" className="fr-btn fr-btn--primary">
                 <ClipboardCheck size={15} />
                 Express Interest
                 <ArrowRight size={15} />
               </a>
-              <a href="/farda-franchise-brochure.pdf" download className="fr-btn fr-btn--outline">
-                <Download size={15} />
-                Download Franchise Brochure
-              </a>
+              {!hideBrochure && <a href="/contact?inquiry=Franchise%20Partnership" className="fr-btn fr-btn--outline">
+                <MessageCircle size={15} />
+                Request Franchise Brochure
+              </a>}
             </div>
           </div>
           <div className="fr-hero__media">
@@ -460,7 +460,7 @@ const Franchise = () => {
             <p className="fr-cta__text">
               Partner with Farda and bring innovation closer to your customers.
             </p>
-            <a href="/contact" className="fr-btn fr-btn--primary fr-btn--lg">
+            <a href="/contact?inquiry=Franchise%20Partnership" className="fr-btn fr-btn--primary fr-btn--lg">
               Express Interest
               <ArrowRight size={15} />
             </a>
@@ -469,7 +469,7 @@ const Franchise = () => {
           </div>
         </div>
       </section>
-    </main>
+    </article>
   )
 }
 

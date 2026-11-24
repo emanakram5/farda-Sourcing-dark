@@ -1,9 +1,63 @@
-
 {
   "rewrites": [
     {
+      "source": "/products/:slug",
+      "destination": "/products/:slug/index.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/home/index.html"
+    },
+    {
+      "source": "/who-we-are",
+      "destination": "/who-we-are/index.html"
+    },
+    {
+      "source": "/products",
+      "destination": "/products/index.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services/index.html"
+    },
+    {
+      "source": "/our-mission",
+      "destination": "/our-mission/index.html"
+    },
+    {
+      "source": "/get-a-quote",
+      "destination": "/get-a-quote/index.html"
+    },
+    {
+      "source": "/supplier",
+      "destination": "/supplier/index.html"
+    },
+    {
+      "source": "/franchise",
+      "destination": "/franchise/index.html"
+    },
+    {
+      "source": "/markets",
+      "destination": "/markets/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/how-it-works",
+      "destination": "/home",
+      "permanent": true
     }
   ]
 }

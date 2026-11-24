@@ -1,81 +1,61 @@
 ﻿# Farda Sourcing - Agent Instructions
 
-These instructions apply to this repository and its subdirectories. Follow the user's latest instructions and any applicable instructions in more specific AGENTS.md files.
+These instructions cover this repository and its subdirectories. Follow the user's latest instructions and any more specific AGENTS.md.
 
-## Repository and Git workflow
+## Git and scope
 
 - Repository: https://github.com/emanakram5/farda-Sourcing-dark
-- The default branch is `main`. Base descriptions of the current project on its actual source, not on unmerged work from other branches.
-- Inspect the current branch, Git status, and relevant diffs before editing. Preserve unrelated changes.
-- Do not switch the user's active checkout or discard work without authorization. Use a separate worktree when needed to isolate an authorized change.
-- Commit or push only when explicitly instructed. Changes to `main` require explicit authorization; do not assume a request for local edits includes publication.
-- Do not run destructive Git commands, rewrite shared history, or force-push.
-- Stage only files within the requested scope. Check the staged diff before committing and verify the destination branch before pushing.
-- Preserve existing project functionality and avoid unrelated dependency or formatting changes.
+- Current redesign branch: `redesign/reference-website`; default branch: `main`.
+- Inspect branch, status and relevant diffs before editing. Preserve unrelated work.
+- Do not switch the user's checkout or discard changes without authorization. Use an isolated worktree when appropriate.
+- Commit and push only when explicitly requested. Changes or publication to main require explicit authorization.
+- Never force-push, rewrite shared history or run destructive Git commands.
+- Stage only requested files; review the staged diff and destination branch before publication.
 
-## Project and current architecture
+## Current architecture
 
-Farda Sourcing is a multi-page marketing website built with React 18, React Router 6, and Vite 5. It uses plain CSS, Framer Motion, Three.js, and Lucide React. Read `package.json` and `package-lock.json` for dependency versions and scripts.
+- React 18, React Router 6, Vite 5, Lucide React and plain CSS. Inspect package.json and package-lock.json for versions.
+- src/main.jsx starts BrowserRouter and imports variables.css and base.css.
+- src/App.jsx owns shared navigation/footer, route selection, metadata, home, products and services.
+- App imports redesign.css followed by brand-light.css. Preserve this override order.
+- src/data/siteData.js contains products, image paths, services and supplier benefits.
+- src/data/productDetails.js contains six product slugs' overview text and SITE_URL, currently https://fardasourcing.com.
+- src/components/ProductDialog.jsx uses a native modal dialog with focus containment, Escape/backdrop/cross dismissal and body scroll locking. Product cards are full clickable links with keyboard focus and a receding hover effect.
+- src/components/Logo.jsx shares the exact logo geometry with the cube mark.
+- src/pages/About.jsx serves Who We Are, including the YC Solutions logo and collaboration text.
+- src/pages/Franchise.jsx serves Our Mission with hideBrochure and also /franchise.
+- src/pages/HowItWorks.jsx is embedded on home; it is not a standalone route. Phones, short screens and reduced-motion settings receive static process cards.
+- src/pages/Supplier.jsx remains the legacy supplier route. Services incorporates supplier content without the animated partner criteria.
+- src/pages/Contact.jsx and src/hooks/useFormValidation.js handle validation and POST submissions to /api/contact.
+- scripts/route-metadata.mjs generates route HTML, product metadata/structured data, canonical URLs, sitemap.xml and robots.txt during the build. Keep its output consistent with client metadata.
+- public/images holds product assets and other images; preserve originals unless explicitly within cleanup scope.
 
-The reviewed main baseline is commit `174732773e54bda0981f419af7be502b03639a11`. At that baseline:
+## Behavior to preserve
 
-- `src/App.jsx` mounts `Scene3D`, `Preloader`, scroll helpers, shared navigation, page routes, and the footer. Inspect each component before assuming what it renders.
-- Home uses cinematic content, scroll reveals, animated counters, and additional home sections.
-- Products uses category filters and a scroll-driven rotating product showroom with previous/next controls and quote links.
-- Services uses an animated shipment route with service stations.
-- How It Works and supplier partnership criteria use scroll-driven vertical presentations.
-- Navigation changes appearance and visibility while scrolling and includes a mobile menu.
-- The responsive simplifications developed separately on `refin/suh` are not part of this baseline. There is no `src/styles/responsive.css` in this main baseline.
+- /home, /who-we-are, /products, /products/:slug, /services, /our-mission, /contact, /supplier, /franchise and /markets.
+- Aliases /, /about and /get-a-quote; /how-it-works redirects to /home; unmatched routes show 404.
+- Six products without categories or filter controls. Product cards open detailed overviews; there are no per-card quote links.
+- Popup close returns focus to the matching product card. Preserve direct detail URLs and metadata.
+- Service page order: supplier content, services, franchise overview. No per-service inquiry links.
+- Home counters finish exactly at 500+, 15+, 20+ and 100%; reduced motion displays final values immediately.
+- Maintain charcoal, muted gradients, readable light text and green accents. Avoid bright white form/panel backgrounds.
+- Keep full product images visible with contain sizing, keyboard focus, touch targets, mobile navigation and reduced-motion behavior.
+- The contact form has no Inquiry Type field. Name, email and message are required; company and country are optional. Product query parameters prefill the message.
 
-Reinspect these details when working on later commits; this baseline is context, not a restriction on user-authorized changes.
+## Commands and verification
 
-## Source map
+- Install: npm ci --include=dev --no-audit --no-fund
+- Develop: npm run dev -- --host 0.0.0.0
+- Build: npm run build
+- Local production preview: npm run preview
+- Use npm.cmd on Windows if npm.ps1 is blocked. Share the actual Vite URL.
+- Do not install dependencies concurrently with another installer or build.
+- For source changes run a production build and targeted checks. Run git diff --check before handoff.
+- Check widths 320, 390, 768, 1024, 1366 and 1920px plus short landscape when layout changes.
+- Test modal mouse/keyboard/touch interactions, navigation, inquiry presets, validation and reduced motion when affected.
+- Distinguish simulated Chromium viewports from physical-device or Safari testing. Report only checks actually performed on the current source.
+- Do not add temporary test dependencies, screenshots or browser output to tracked files.
 
-- `src/main.jsx`: React bootstrap, router setup, and global stylesheet imports.
-- `src/App.jsx`: shared application layout and route definitions.
-- `src/data/siteData.js`: shared company, product, service, process, navigation, and footer data.
-- `src/components/Navbar.jsx` and `Navbar.css`: desktop/mobile navigation.
-- `src/components/Footer.jsx` and `Footer.css`: footer links and newsletter UI.
-- `src/components/cine/`: cinematic home content, background scene, and preloader component.
-- `src/components/home/`: home sections, motion helpers, and alternative story/canvas components. Check imports to determine which are active.
-- `src/components/ScrollReveal.jsx` and `ScrollToTop.jsx`: shared route/scroll behavior.
-- `src/pages/`: route components and page-specific styles.
-- `src/styles/`: variables, base styles, motion styles, and cinematic theme. Their import order matters.
-- `src/hooks/useFormValidation.js`: inquiry form validation.
-- `src/services/api.js`: placeholder inquiry submission layer.
-- `public/`: images, videos, favicon, and static hosting redirects.
+## Delivery limits
 
-## Routes and behavior to preserve
-
-Preserve `/`, `/about`, `/products`, `/services`, `/markets`, `/how-it-works`, `/supplier`, `/contact`, `/franchise`, and the unmatched-route 404 page unless the user requests a change.
-
-Keep product filtering, showroom controls, navigation, quote/contact links, inquiry query parameters, and form validation working. Check inquiry presets against `INQUIRY_TYPES` in `siteData.js`; do not assume every incoming value is accepted.
-
-Maintain the dark background and lime brand accent. For layout or animation changes, check readability, contrast, alignment, keyboard focus, touch controls, and reduced-motion behavior. Ensure content remains accessible and guard against document-wide horizontal overflow and fixed-navigation overlap.
-
-## Local commands
-
-Run these commands from the selected checkout:
-
-- Install locked dependencies when absent: `npm ci --no-audit --no-fund`
-- Start development preview: `npm run dev -- --host 0.0.0.0`
-- Build for production: `npm run build`
-- Preview the production build: `npm run preview`
-
-On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm.ps1`. Share the actual URL printed by Vite; do not assume a previous server is still running. Do not run dependency installation concurrently with another installer or a build.
-
-## Validation and reporting
-
-- For meaningful source changes, run the production build and checks appropriate to the changed behavior. Documentation-only edits do not require an application rebuild.
-- For responsive changes, inspect phone, tablet, laptop, desktop, and short landscape viewports. Useful widths include 320, 390, 768, 1024, 1366, and 1920px.
-- Test product controls, navigation, inquiry links, validation, and reduced motion when affected.
-- Distinguish viewport simulation from testing on physical devices or Safari.
-- Review the staged diff and run `git diff --check` or `git diff --cached --check` before handoff.
-- Do not add temporary browser/test dependencies to tracked manifests without a task-related reason.
-- Report only checks performed on the relevant source state. Tests on another branch do not verify `main`.
-
-## Integration limits
-
-`src/services/api.js` currently logs inquiry data and resolves a delayed promise; it does not send a real backend request. The newsletter UI validates an email and shows a success message but has a TODO for connecting a provider. Local success messages do not prove external delivery.
-
-README descriptions can be historical; prefer the active source when documenting behavior. See `report.txt` for the scope and verification of this documentation update.
+The contact form posts to server/contact.mjs, a self-hosted Node SMTP API. Credentials remain in server environment variables; never put them in VITE_ variables or client code. See server/README.md and .env.example. SMTP is not configured yet; missing configuration returns 503. Preserve input on failures; success requires SMTP acceptance. Run npm run test:contact for backend changes. Tests simulate mail transport and do not prove inbox delivery. There is no database or newsletter integration. Deployment and publication require a separate user instruction.

@@ -113,14 +113,12 @@ export const ABOUT = {
 export const PRODUCT_CATEGORIES = ['All Categories', 'AI & Robotics', 'Smart Home', 'Industrial', 'Electronics', 'More'];
 
 export const PRODUCTS = [
-  { name: 'Humanoid Robots', category: 'AI & Robotics', image: IMAGES.prodHumanoid },
-  { name: 'Robot Vacuum Cleaners', category: 'Smart Home', image: IMAGES.prodVacuum },
-  { name: 'Industrial Robotic Arms', category: 'Industrial', image: IMAGES.prodRoboticArm },
-  { name: 'Smart Security Cameras', category: 'Smart Home', image: IMAGES.prodCamera },
-  { name: 'Smart Wearables', category: 'Electronics', image: IMAGES.prodWearables },
-  { name: 'Drones & UAV', category: 'AI & Robotics', image: IMAGES.prodDrone },
-  { name: 'EV & E-Mobility', category: 'More', image: IMAGES.prodScooter },
-  { name: 'Consumer Electronics', category: 'Electronics', image: IMAGES.prodHeadphones },
+  { slug: 'robot-vacuum', name: 'Robot Vacuum', image: IMAGES.prodVacuum, description: 'Robotic cleaning for everyday spaces.' },
+  { slug: 'smart-home-security-package', name: 'Smart Home Security Package', image: IMAGES.prodCamera, imageAlt: 'Smart security camera, part of the home security package', includes: ['Smart Doorbell', 'Smart AI Cameras', 'Smart Doorlocks'] },
+  { slug: 'exoskeleton-walking-assistant', name: 'Exoskeleton (Walking Assistant)', image: '/images/exoskeleton.jpg', imageAlt: 'Wearable exoskeleton walking assistant', description: 'A walking assistant designed to support mobility.' },
+  { slug: 'vehicle-monitoring-package', name: 'Vehicle Monitoring Package', image: '/images/vehicle-monitoring.jpg', imageAlt: 'Vehicle monitoring equipment for GPS tracking and dashcam recording', includes: ['GPS Motion Tracking', 'Smart Dashcams'] },
+  { slug: 'ai-smart-massage-chair', name: 'AI Smart Massage Chair', image: '/images/ai-massage-chair.jpg', imageAlt: 'AI smart massage chair with control screen', description: 'An AI smart massage chair for comfort and relaxation.' },
+  { slug: 'ai-smart-mirrors', name: 'AI Smart Mirrors', image: '/images/ai-smart-mirror.jpg', imageAlt: 'Freestanding AI smart mirror for commercial use', description: 'AI smart mirrors for commercial use.' },
 ];
 
 export const SERVICES = [
@@ -160,14 +158,6 @@ export const SUPPLIER_BENEFITS = [
   'Timely payments and professional support',
 ];
 
-export const INQUIRY_TYPES = [
-  'Product Sourcing',
-  'Become a Supplier',
-  'Logistics & Shipping',
-  'Quality Inspection',
-  'Market Research',
-  'Other',
-];
 
 export const FOOTER_COLUMNS = [
   {

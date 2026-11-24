@@ -1,241 +1,89 @@
 ﻿FARDA SOURCING - DEPLOYMENT PREREQUISITES
-Prepared: 21 November 2026
-Intended deployment branch: main
-Reviewed baseline: 6627c51265abbc03f40ce72e74346bb3b75c997e
+Updated: 24 November 2026
+Source branch: redesign/reference-website
 Repository: https://github.com/emanakram5/farda-Sourcing-dark
+Canonical website: https://fardasourcing.com
 
-PURPOSE AND STATUS
-This document lists what is needed to build, host, and launch this website.
-It is based on main, not the separate uncommitted responsive changes on
-refin/suh. This document does not install a server or deploy the website.
-Server provider, operating system, domain ownership, access credentials,
-and production configuration have not yet been supplied or verified.
+1. BUILD AND ARTIFACT
+This is a static React/Vite website. Node and npm are required on the build
+machine, not on a server serving prebuilt files. The contact API requires a persistent Node.js service; there is no database.
+The local build was exercised with Node v26.13.0 and npm 11.20.0. Choose and
+pin a supported Node release compatible with the lockfile in deployment CI;
+validate the build there before launch rather than assuming another version.
 
-1. WHAT NEEDS TO BE HOSTED
-- This is a client-side React application built with Vite.
-- The deployable output is the contents of dist/ after a successful build.
-- It can be served by a static host or a production web server such as Nginx.
-- Node.js and npm are needed on the build machine or CI runner. They are not
-  required on a server that only receives and serves the prebuilt dist files.
-- The current site has no implemented application backend or database.
-  A backend or form provider is needed if inquiries must actually be delivered.
-- Do not use npm run dev or npm run preview as the public production server.
-  Vite documents preview as a local build-checking tool, not a production server.
-  Reference: https://vite.dev/guide/static-deploy
-
-2. INFORMATION AND ACCESS TO PREPARE
-[ ] Hosting account or server, with permission to upload files and set routing.
-[ ] For a self-managed server: OS/version, public IP address, SSH access,
-    a deployment user, and administrator access for initial server configuration.
-[ ] The production domain and access to its DNS settings.
-[ ] Decide whether the canonical address uses www or the root domain.
-[ ] A person/account responsible for renewals, deployment, and incident access.
-[ ] GitHub repository read access for the build system if the repository is private.
-[ ] Approved production commit and a way to retain the previous working release.
-[ ] If enabling forms: selected delivery service/backend and the receiving inbox.
-
-Credentials and private keys must be shared securely, never added to this
-file, client JavaScript, Git history, or the public web directory.
-
-3. BUILD MACHINE REQUIREMENTS
-- Use a currently supported Active LTS or Maintenance LTS Node.js release
-  compatible with the locked dependencies. Pin the exact successfully tested
-  Node/npm versions in the deployment environment for repeatable builds.
-- Do not select an end-of-life Node version merely because an older Vite
-  dependency or README accepts it. Check the current official release status:
-  https://nodejs.org/en/about/previous-releases
-- npm must be available. Git is required if this machine checks out the source.
-- Allow build-time access to the configured npm registry to install dependencies.
-- Keep package-lock.json and use npm ci for a clean, reproducible installation.
-- Include development dependencies during the build: Vite and its React plugin
-  are devDependencies. Do not use a production-only install before building.
-- Provide enough disk space and memory for dependency installation and the build.
-  No production load or minimum-resource benchmark has been performed.
-
-Commands in a CLEAN checkout of the approved main commit:
-
-  node --version
-  npm --version
+From the approved checkout:
   npm ci --include=dev --no-audit --no-fund
   npm run build
 
-Windows PowerShell: use npm.cmd in place of npm if npm.ps1 is blocked.
+Use npm.cmd on Windows if PowerShell blocks npm.ps1. Include development
+dependencies during installation because Vite is needed for building.
+Publish the CONTENTS of dist/, including nested route directories, assets,
+images, sitemap.xml and robots.txt. Keep the exact commit and toolchain in the
+release record. Do not publish source, .git, node_modules, credentials or logs.
+Use a static host/web server for production; dev/preview are local tools.
 
-Confirm dist/index.html and dist/assets/ exist. Keep the build log, exact
-source commit, and Node/npm versions with the release record. A build made
-from a dirty checkout can include unreviewed changes; use a clean build checkout.
-Do not copy the current refin/suh working directory as the main release.
+2. ACCESS AND DOMAIN
+Prepare hosting/server access, DNS control, an approved release and rollback
+artifact. Configure HTTPS for fardasourcing.com with certificate renewal and
+redirect the alternate www/HTTP addresses to the canonical HTTPS address.
+Confirm domain ownership, DNS, hosting and certificates before launch; these
+have not been configured or verified by the local source changes.
+If the production domain changes, update SITE_URL in
+src/data/productDetails.js and rebuild all metadata and the sitemap.
 
-4. WEB SERVER AND PUBLIC FILES
-- Upload the CONTENTS of dist/ to the configured public document root.
-- Do not publish the repository root, .git, .env files, node_modules, or logs.
-- Serve HTML, CSS, JavaScript, SVG, PNG, PDF, and other assets with correct MIME
-  types. Missing JavaScript must not return the SPA HTML page.
-- The deployment user needs write access to release directories; the web server
-  needs read access. Do not make the public directory world-writable.
-- Use a maintained web server and configure automatic service startup if managing
-  the server yourself. Use the host's managed equivalent where applicable.
-- HTTPS is the public endpoint. Permit inbound HTTP/HTTPS as required for traffic,
-  redirects, and certificate validation; restrict administration access separately.
-- Do not expose the Vite development/preview ports as the production website.
+3. ROUTING - GENERATED HTML BEFORE SPA FALLBACK
+Serve existing files and generated route/index.html before the SPA fallback.
+This is essential for product-specific titles, descriptions and canonical tags.
+Vercel: the checked-in vercel.json supplies route rewrites and the old
+/how-it-works redirect. Build command: npm run build. Output directory: dist.
+Netlify: public/_redirects supplies a final SPA fallback; preserve normal
+existing-file shadowing and configure /how-it-works -> /home as a redirect.
+Other servers must implement equivalent rules. Example Nginx location rules:
 
-5. CLIENT-SIDE ROUTING - REQUIRED
-BrowserRouter handles routes in the browser. A direct request or refresh at
-/about, /products, /services, /supplier, /contact, or /franchise must return
-index.html and allow React to select the page. The /markets and /how-it-works
-routes were removed from the reviewed main baseline.
+  location = /how-it-works { return 301 /home; }
+  location /assets/ { try_files $uri =404; }
+  location /images/ { try_files $uri =404; }
+  location / { try_files $uri $uri/index.html $uri/ /index.html; }
 
-vercel.json now declares a catch-all rewrite to /index.html for Vercel.
-Review its behavior for missing assets during deployment; this document does
-not claim that the hosting configuration has been tested.
+Review/adapt this snippet to the actual server and document root. Do not route
+missing JavaScript, CSS or images to index.html. Use appropriate MIME types.
+Client-side unknown routes show a 404 view; the generic SPA fallback may still
+respond HTTP 200. Configure a real server 404 strategy if that is required.
 
-public/_redirects currently contains:
+4. SEO AND STATIC FILES
+The build creates HTML for regular routes and all six /products/:slug URLs,
+with unique titles/descriptions, canonical tags, social metadata and product
+structured metadata. Product HTML also includes a no-JavaScript text fallback.
+The generated sitemap lists canonical routes and excludes aliases; robots.txt
+references https://fardasourcing.com/sitemap.xml. Ensure both are publicly
+accessible after deployment, then submit the sitemap to the chosen search
+console. Generation does not guarantee search indexing or rich results.
+Keep all public/images files referenced by the source. The four uploaded JPGs
+are about 1.6-1.9 MB each; consider derived compressed/responsive assets if page
+weight needs improvement, retaining the originals and visual quality.
 
-  /* /index.html 200
+5. CONTACT AND EXTERNAL RESOURCES
+The Contact Us page posts to /api/contact. Run server/contact.mjs on loopback
+port 3001 behind the same HTTPS host, with the proxy and private SMTP settings
+described in server/README.md. Use .env.example as a template. SMTP is not
+configured yet; delivery is pending setup and a real inbox test. Never expose
+SMTP credentials in dist or VITE_ variables. Static hosting alone cannot run
+the API. The previous Vercel rules cover the site, not this Node service.
+There is no active newsletter integration. No API secrets belong in Vite's
+public client bundle. Review contact/social details before launch.
+The Inter font is loaded from Google Fonts with system-font fallbacks; verify
+production access or self-host if required.
 
-That file only takes effect on hosts supporting this redirect format. Nginx,
-Apache, and other servers need their own equivalent configuration. Ensure
-missing real asset files return 404 instead of HTML, even with an SPA fallback.
+6. RELEASE CHECKS
+- Build the exact approved source successfully and retain the prior artifact.
+- Verify HTTPS, canonical redirects and direct refreshes on all main routes.
+- Open all six product URLs directly; inspect metadata without relying on JS.
+- Verify sitemap.xml, robots.txt, image requests and missing-asset 404s.
+- Check phone/tablet/laptop/desktop and short landscape, overflow and text.
+- Test full product card clicks, cross/Escape dismissal and focus restoration.
+- Test mobile navigation, reduced motion, final counter values, inquiry presets
+  and validation; confirm actual inbox receipt after configuring SMTP.
+- Cache hashed assets long-term; revalidate HTML and unversioned assets.
+- Upload the entire release before switching traffic; confirm rollback access.
 
-Illustrative Nginx HTTP server block (replace example.com and the root path):
-
-  server {
-      listen 80;
-      server_name example.com www.example.com;
-      root /var/www/farda/current;
-      index index.html;
-
-      location = /index.html {
-          add_header Cache-Control "no-cache";
-      }
-
-      location /assets/ {
-          try_files $uri =404;
-          add_header Cache-Control "public, max-age=31536000, immutable";
-      }
-
-      location /images/ {
-          try_files $uri =404;
-      }
-
-      location /videos/ {
-          try_files $uri =404;
-      }
-
-      location = /favicon.svg {
-          try_files $uri =404;
-      }
-
-      location = /farda-franchise-brochure.pdf {
-          try_files $uri =404;
-      }
-
-      # Until a real backend is configured, never return SPA HTML as an API reply.
-      location /api/ {
-          return 404;
-      }
-
-      location / {
-          try_files $uri $uri/ /index.html;
-      }
-  }
-
-This is an HTTP bootstrap example, not a complete HTTPS configuration. Install
-and configure TLS at the server or hosting edge before public launch, then
-redirect HTTP to HTTPS. With Nginx, validate configuration using nginx -t before
-reloading. Replace the /api/ block with the actual backend route if one is added.
-Reference: https://docs.nginx.com/nginx/admin-guide/web-server/serving-static-content/
-
-The current Vite config uses the default root deployment path (/), and the
-source contains root-relative asset URLs. Host at the domain root. Deployment
-under /some-subdirectory/ needs coordinated Vite base, router basename, asset
-URL, and fallback changes; it is not configured by this document.
-
-6. DOMAIN, DNS, AND HTTPS
-[ ] Point the domain to the hosting endpoint/IP as instructed by the host.
-[ ] Configure the www record if it will be used. Only publish an AAAA record
-    when the server/host actually serves the site over that IPv6 address.
-[ ] Preserve unrelated email DNS records when changing website DNS.
-[ ] Issue a valid TLS certificate covering every hostname serving the website.
-[ ] Enable automatic certificate renewal and monitor failures/expiry.
-[ ] Choose one canonical hostname and redirect alternatives to it without loops.
-[ ] Verify HTTP-to-HTTPS redirects and that images/fonts/scripts use HTTPS.
-[ ] Test both canonical and alternate hostnames after DNS changes propagate.
-
-7. FORMS AND ENVIRONMENT CONFIGURATION
-Contact inquiries:
-- src/services/api.js currently logs the data and resolves a delayed promise.
-  No inquiry is sent to a mailbox, database, or CRM by this implementation.
-- Before offering a working inquiry form, connect submitInquiry() to an actual
-  backend or form provider and verify delivery to the intended destination.
-- Validate input on the server/provider, handle delivery errors, and configure
-  appropriate abuse controls. Client-side validation alone is not delivery.
-- If the endpoint uses a different origin, configure its CORS rules for the
-  real production domain. Keep SMTP/API secrets on the backend/provider.
-- If sending email with your domain, complete the provider's domain verification
-  and required DNS records, then test actual inbox delivery.
-
-Newsletter:
-- Footer.jsx validates an email locally and shows a success message. Its TODO
-  for a newsletter provider is still present. Connect the provider and verify
-  the subscriber appears in the correct list before treating it as operational.
-
-Current frontend environment:
-- No import.meta.env or process.env use was found in the reviewed src files.
-  The existing static frontend does not currently require application env values.
-- If adding a VITE_* variable, treat its value as public: Vite embeds it into
-  the browser build. Frontend build-time changes require rebuilding the assets.
-- Do not add secrets to VITE_* variables or commit production .env files.
-
-8. ASSETS AND BUSINESS CONTENT TO RESOLVE BEFORE LAUNCH
-The following were found by reviewing main; fix or intentionally remove each
-reference before launch. A successful build does not check all public asset URLs.
-
-[ ] Franchise.jsx links to /farda-franchise-brochure.pdf, but that PDF is not
-    tracked in main's public directory. Supply the approved PDF or update the link.
-[ ] siteData.js references /images/hero-robot.png, but the tracked file is
-    public/images/hero-robot.svg. Check active consumers and correct the path.
-[ ] siteData.js defines aboutOffice as /image/about-office.svg, while the
-    tracked directory is /images/. Check consumers and correct the path.
-[ ] The home hero still links to /markets, but main no longer declares that
-    route. Remove/update this stale link or deliberately restore the page.
-[ ] Verify ALL image/video/download paths with exact case on the production
-    filesystem. Image fallback placeholders can mask missing assets during review.
-[ ] Confirm the real business email, phone/WhatsApp number, address, hours,
-    social URLs, and any application/download links with the site owner.
-[ ] Review page title, description, favicon, and any needed privacy information
-    before collecting customer contact details.
-
-9. CACHING, EXTERNAL RESOURCES, AND RELEASES
-- Cache Vite's hashed /assets/ files long-term; make index.html revalidate so
-  visitors receive references to the latest build.
-- Do not apply immutable caching indiscriminately to unversioned images or PDFs.
-- index.html loads Inter from fonts.googleapis.com and fonts.gstatic.com. Verify
-  access in production or self-host the font if required. A system-font fallback
-  exists, so check readability when the remote font cannot load.
-- Serve a complete release before switching the public document root. Retain
-  the previous working artifact for rollback; avoid exposing a partial upload.
-- If a CDN caches HTML, invalidate/update it on release. Retaining previous
-  hashed assets briefly helps visitors whose older HTML is still open.
-- Record deployment time and commit, and monitor web-server errors, availability,
-  certificate renewal, and real form-delivery failures after launch.
-
-10. GO-LIVE ACCEPTANCE CHECKS
-[ ] Build the exact approved main commit successfully using the pinned toolchain.
-[ ] Confirm no .git, .env, private configuration, or source repository is public.
-[ ] Verify the domain, canonical redirects, HTTPS, and certificate renewal setup.
-[ ] Open every main route directly, refresh it, and follow links between routes.
-[ ] Confirm an unknown client route displays the application's 404 page.
-[ ] Request a missing asset and confirm a real 404, not index.html with status 200.
-[ ] Inspect browser console/network errors and all images and download links.
-[ ] Check phone, iPad/tablet, laptop, desktop, and short landscape layouts.
-[ ] Verify product category filters, showroom controls, mobile navigation,
-    quote links, inquiry preselection, keyboard access, and reduced motion.
-[ ] Submit an approved test inquiry and verify ACTUAL receipt and failure handling.
-[ ] Submit an approved newsletter test and verify the subscriber in the provider.
-[ ] Verify rollback to the retained previous release can be performed.
-
-PUBLICATION NOTE
-This document is intended for main. Publishing it does not deploy the website
-or configure a server. The checks above are requirements, not claims of
-completed tests. Server deployment requires a separate user request.
+This file describes prerequisites. It does not deploy or publish the website.

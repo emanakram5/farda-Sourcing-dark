@@ -6,16 +6,17 @@
   "description": "Farda Sourcing - global sourcing company website built with React and Vite",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && node scripts/route-metadata.mjs",
+    "preview": "vite preview",
+    "start:contact": "node --env-file=.env server/contact.mjs",
+    "test:contact": "node --test server/contact.test.mjs"
   },
   "dependencies": {
-    "framer-motion": "^14.14.0",
     "lucide-react": "^1.72.0",
+    "nodemailer": "^10.6.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "three": "^0.170.0"
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
