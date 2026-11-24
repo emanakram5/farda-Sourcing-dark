@@ -1,0 +1,37 @@
+.company-group { background: radial-gradient(ellipse at bottom, #79ad1714, transparent 65%), #18231c; }
+.company-group__heading { max-width: 760px; margin-bottom: 40px; }
+.company-group__heading h2 { margin-bottom: 20px; }
+.company-tree { position: relative; }
+.company-tree__parent { position: relative; z-index: 1; max-width: 420px; margin-inline: auto; text-align: center; border: 1px solid #b4ff0080; border-radius: 20px; padding: 28px; background: linear-gradient(135deg, #35452c, #202e22); }
+.company-tree__parent h3 { font-size: clamp(24px, 3vw, 32px); margin: 12px 0; }
+.company-tree__parent p { font-size: 15px; }
+.company-tree__branches { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 64px 0 0; margin: 0; }
+.company-tree__branches::before { content: ''; position: absolute; top: 32px; left: calc((100% - 72px) / 8); right: calc((100% - 72px) / 8); height: 1px; background: #b4ff0066; }
+.company-tree__branches::after { content: ''; position: absolute; top: 0; bottom: -1px; left: calc(50% - .5px); width: 1px; background: #b4ff0066; }
+.company-tree__branch { position: relative; z-index: 1; min-width: 0; padding: 16px; border: 1px solid #ffffff30; border-radius: 16px; background: #28342c; }
+.company-tree__branch::before { content: ''; position: absolute; left: 50%; top: -33px; height: 32px; width: 1px; background: #b4ff0066; }
+.company-tree__logo { height: 100px; display: grid; place-items: center; padding: 16px; background: #ced4ce; border-radius: 10px; margin-bottom: 20px; }
+.company-tree__logo--dark { background: #687873; }
+.company-tree__logo img { max-width: 100%; max-height: 68px; width: auto; height: auto; object-fit: contain; }
+.ab .company-tree__branch h3 { font-size: 20px; line-height: 1.3; margin-bottom: 12px; }
+.ab .company-tree__branch p { font-size: 15px; }
+.company-tree__farda { position: relative; max-width: 620px; margin-inline: auto; padding-top: 64px; }
+.company-tree__signal { position: absolute; left: calc(50% - 1px); top: 0; height: 64px; width: 2px; background: #b4ff0050; overflow: hidden; }
+.company-tree__signal::after { content: ''; position: absolute; left: 0; top: -24px; width: 2px; height: 24px; background: linear-gradient(transparent, #dfff9c); box-shadow: 0 0 12px #b4ff00; animation: groupConnection 2.5s linear infinite; }
+.company-tree__farda-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: clamp(24px, 4vw, 42px); border-radius: 24px; border: 1px solid #b4ff00b0; background: radial-gradient(ellipse at top, #b4ff001c, transparent 75%), #1c2b20; box-shadow: 0 0 35px #b4ff000d; }
+.ab .company-tree__farda-card h3 { font-size: clamp(24px, 3vw, 32px); }
+@keyframes groupConnection { to { transform: translateY(90px); } }
+@media (max-width: 1000px) { .company-tree__branches { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; } .company-tree__branches::before { left: calc((100% - 24px) / 4); right: calc((100% - 24px) / 4); } .company-tree__branch::before { display: none; } .company-tree__branch:nth-child(-n+2)::before { display: block; } }
+@media (max-width: 560px) { .company-tree__branches { grid-template-columns: 1fr; padding: 32px 0 0 22px; gap: 20px; } .company-tree__branches::after { left: 0; bottom: -32px; } .company-tree__branches::before { left: 0; right: 50%; top: 0; } .company-tree__branch::before, .company-tree__branch:nth-child(-n+2)::before { display: block; width: 22px; height: 1px; top: 50%; left: -23px; } .company-tree__farda::before { content: ''; position: absolute; left: 0; right: 50%; height: 1px; top: 32px; background: #b4ff0066; } .company-tree__signal { top: 32px; height: 32px; } }
+@media (prefers-reduced-motion: reduce) { .company-tree__signal::after { animation: none; top: 0; height: 100%; background: #b4ff00; } }
+.company-backgrounds { margin-top: 70px; }
+.ab .company-backgrounds > h2 { font-size: clamp(26px, 3vw, 38px); margin-bottom: 30px; }
+.company-backgrounds__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.company-backgrounds__card { padding: clamp(24px, 3vw, 36px); border: 1px solid #ffffff30; border-radius: 20px; background: linear-gradient(135deg, #2c3a30, #202b24); scroll-margin-top: 120px; }
+.ab .company-backgrounds__card h3 { font-size: 25px; margin-bottom: 20px; }
+.company-backgrounds__card p + p { margin-top: 18px; }
+.company-tree__branch h3 a:hover { color: #b4ff00; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 700px) { .company-backgrounds__grid { grid-template-columns: 1fr; } }
+
+.company-tree__parent-logo { background: #ced4ce; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.company-tree__parent-logo img { display: block; width: 100%; height: 110px; object-fit: contain; }

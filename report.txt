@@ -104,3 +104,12 @@ are run before committing. No environment credentials, node_modules, dist or
 local test output are included. SMTP remains unconfigured; live mail delivery
 and public deployment are not claimed. Final commit and remote verification
 are reported in the task handoff and repository history.
+
+PRODUCT PAGES AND YC GROUP UPDATE - 24 NOVEMBER 2026
+Replaced product popups with dedicated pages at the existing six URLs; expanded
+descriptions are present directly in generated HTML. Added the YC Group parent
+logo, four associated-company logos, PDF-based profiles and animated Farda
+connection. Removed the YC Solutions collaboration section; corrected Cloud
+Rexpo spelling. Who We Are metadata and initial HTML include group content.
+Local build and seven backend tests passed. Responsive company/product checks
+cover 320-1920px plus short landscape; no physical-device testing is claimed.

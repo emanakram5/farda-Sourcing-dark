@@ -9,7 +9,7 @@ import {
   SOCIAL_LINKS,
 } from "./data/siteData.js";
 import { PRODUCT_DETAILS, SITE_URL } from "./data/productDetails.js";
-import ProductDialog from "./components/ProductDialog.jsx";
+import ProductDetail from "./pages/ProductDetail.jsx";
 import Logo, { LogoMark } from "./components/Logo.jsx";
 import Icon from "./components/Icon.jsx";
 import HowItWorks from "./pages/HowItWorks.jsx";
@@ -27,7 +27,7 @@ export const pageInfo = {
   ],
   "/who-we-are": [
     "Who We Are",
-    "Meet Farda Sourcing, your partner connecting innovative manufacturers with businesses through transparent sourcing and global logistics.",
+    "Meet Farda Sourcing and YC Group of Companies: NSOL BPO, Your Cloud Campus, Galaxy View Real Estate and Cloud Rexpo. Explore our group and sourcing mission.",
   ],
   "/products": [
     "Products & Technology",
@@ -307,7 +307,7 @@ function Home() {
 }
 function Product({ product: p }) {
   return (
-    <Link className="glass product-card" id={"details-" + p.slug} to={"/products/" + p.slug} aria-label={"Explore " + p.name} aria-haspopup="dialog">
+    <Link className="glass product-card" id={"details-" + p.slug} to={"/products/" + p.slug} aria-label={"Explore " + p.name}>
       {p.image ? <img src={p.image} alt={p.imageAlt || p.name} loading="lazy" width="400" height="300" /> : <div className="product-image-placeholder"><Icon name="package" size={48} /><span>Image coming soon</span></div>}
       <div>
         <h2>{p.name}</h2>
@@ -317,12 +317,7 @@ function Product({ product: p }) {
     </Link>
   );
 }
-function Products({ productSlug }) {
-  const location = useLocation();
-  useEffect(() => {
-    if (location.state?.focusProduct) document.getElementById('details-' + location.state.focusProduct)?.focus({ preventScroll: true });
-  }, [location.state]);
-  const product = PRODUCTS.find(item => item.slug === productSlug);
+function Products() {
   return (
     <>
       <Intro
@@ -330,7 +325,6 @@ function Products({ productSlug }) {
         title="Tomorrow’s possibilities. Ready to source."
         text="Explore technology that moves businesses forward. We connect you with the factories behind it."
       />
-      {product && <ProductDialog product={product} details={PRODUCT_DETAILS[product.slug]} />}
       <p className="result-count">{PRODUCTS.length} products</p>
       <div className="product-grid">
         {PRODUCTS.map((p) => (
@@ -424,7 +418,8 @@ export default function App() {
   }, []);
   let page;
   if (path === "/home") page = <Home />;
-  else if (path === "/products" || (path.startsWith("/products/") && PRODUCT_DETAILS[path.slice(10)])) page = <Products productSlug={path.slice(10)} />;
+  else if (path === "/products") page = <Products />;
+  else if (path.startsWith('/products/') && PRODUCT_DETAILS[path.slice(10)]) page = <ProductDetail product={PRODUCTS.find(product => product.slug === path.slice(10))} details={PRODUCT_DETAILS[path.slice(10)]} />;
   else if (path === "/who-we-are") page = <About />;
   else if (path === "/services") page = <Services />;
   else if (path === "/our-mission") page = <Franchise hideBrochure />;

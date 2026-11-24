@@ -20,9 +20,9 @@ These instructions cover this repository and its subdirectories. Follow the user
 - App imports redesign.css followed by brand-light.css. Preserve this override order.
 - src/data/siteData.js contains products, image paths, services and supplier benefits.
 - src/data/productDetails.js contains six product slugs' overview text and SITE_URL, currently https://fardasourcing.com.
-- src/components/ProductDialog.jsx uses a native modal dialog with focus containment, Escape/backdrop/cross dismissal and body scroll locking. Product cards are full clickable links with keyboard focus and a receding hover effect.
+- src/pages/ProductDetail.jsx renders six dedicated product pages with full descriptions, images, package contents and selection guidance. Cards retain the receding hover effect and keyboard navigation.
 - src/components/Logo.jsx shares the exact logo geometry with the cube mark.
-- src/pages/About.jsx serves Who We Are, including the YC Solutions logo and collaboration text.
+- src/pages/About.jsx serves Who We Are, including the YC Group hierarchy, company logos and PDF-based background descriptions in src/components/CompanyGroup.jsx and src/data/companyGroup.js.
 - src/pages/Franchise.jsx serves Our Mission with hideBrochure and also /franchise.
 - src/pages/HowItWorks.jsx is embedded on home; it is not a standalone route. Phones, short screens and reduced-motion settings receive static process cards.
 - src/pages/Supplier.jsx remains the legacy supplier route. Services incorporates supplier content without the animated partner criteria.
@@ -34,8 +34,8 @@ These instructions cover this repository and its subdirectories. Follow the user
 
 - /home, /who-we-are, /products, /products/:slug, /services, /our-mission, /contact, /supplier, /franchise and /markets.
 - Aliases /, /about and /get-a-quote; /how-it-works redirects to /home; unmatched routes show 404.
-- Six products without categories or filter controls. Product cards open detailed overviews; there are no per-card quote links.
-- Popup close returns focus to the matching product card. Preserve direct detail URLs and metadata.
+- Six products without categories or filter controls. Product cards open dedicated detail pages; there are no per-card quote links.
+- Preserve product detail URLs, breadcrumbs, browse-all links and metadata; product details no longer use popups.
 - Service page order: supplier content, services, franchise overview. No per-service inquiry links.
 - Home counters finish exactly at 500+, 15+, 20+ and 100%; reduced motion displays final values immediately.
 - Maintain charcoal, muted gradients, readable light text and green accents. Avoid bright white form/panel backgrounds.
