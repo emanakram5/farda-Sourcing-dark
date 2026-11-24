@@ -284,18 +284,6 @@ function Home() {
         <Cubes />
       </section>
       <Stats />
-      <div className="industries">
-        <span>Industries we source</span>
-        {[
-          "AI Robotics",
-          "Smart Home",
-          "Industrial Machinery",
-          "EV & Charging",
-          "Renewable Energy",
-        ].map((x) => (
-          <span key={x}>{x}</span>
-        ))}
-      </div>
       <HowItWorks embedded />
       <section className="section-space">
         <div className="section-heading">
