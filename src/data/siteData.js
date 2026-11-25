@@ -145,7 +145,8 @@ export const PROCESS_STEPS = [
   { number: '02', title: 'Supplier Identification', text: 'We find and shortlist the best manufacturers for you.' },
   { number: '03', title: 'Product Evaluation', text: 'Compare quality, price, samples and supplier capabilities.' },
   { number: '04', title: 'Procurement', text: 'We handle negotiations and coordinate your order.' },
-  { number: '05', title: 'Shipping & Delivery', text: 'We arrange shipping and ensure smooth delivery.' },
+  { number: '05', title: 'Quality Audit & Pre-Shipment Inspection', text: 'Review product quality, quantities and packaging against agreed requirements before shipment.' },
+  { number: '06', title: 'Shipping & Delivery', text: 'We arrange shipping and ensure smooth delivery.' },
 ];
 
 export const MARKET_STATS = [
