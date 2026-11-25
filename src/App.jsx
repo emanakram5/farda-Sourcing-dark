@@ -41,8 +41,8 @@ export const pageInfo = {
     "Our Mission",
     "Discover Farda Sourcing’s franchise model, product range, partner responsibilities and launch support. Build a local business bringing global innovation to your market.",
   ],
-  "/contact": [
-    "Contact Us",
+  "/get-a-quote": [
+    "Get a Quote",
     "Tell Farda Sourcing about your product requirements, quantities and target market. Start a conversation about your next sourcing project.",
   ],
   "/supplier": [
@@ -64,7 +64,7 @@ for (const [slug, product] of Object.entries(PRODUCT_DETAILS)) {
 const aliases = {
   "/": "/home",
   "/about": "/who-we-are",
-  "/get-a-quote": "/contact",
+  "/contact": "/get-a-quote",
 };
 const links = [
   ["/home", "Home"],
@@ -423,7 +423,7 @@ export default function App() {
   else if (path === "/who-we-are") page = <About />;
   else if (path === "/services") page = <Services />;
   else if (path === "/our-mission") page = <Franchise hideBrochure />;
-  else if (path === "/contact") page = <Contact />;
+  else if (path === "/get-a-quote") page = <Contact />;
   else if (path === "/supplier") page = <Supplier />;
   else if (path === "/franchise") page = <Franchise />;
   else if (path === "/how-it-works") page = <Navigate to="/home" replace />;
@@ -485,7 +485,7 @@ export default function App() {
               {label}
             </NavLink>
           ))}
-          <Button to="/contact">Contact Us</Button>
+          <Button to="/get-a-quote">Get a Quote</Button>
         </nav>
       </header>
       <main id="main-content" className="shell" key={path}>

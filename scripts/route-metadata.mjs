@@ -15,7 +15,7 @@ const routes = {
   ...pages,
   "/": pages["/home"],
   "/about": pages["/who-we-are"],
-  "/get-a-quote": pages["/contact"],
+  "/contact": pages["/get-a-quote"],
 };
 for (const [route, [name, description]] of Object.entries(routes)) {
   const title = escape(name + " | Farda Sourcing");
@@ -60,7 +60,7 @@ for (const [slug, product] of Object.entries(PRODUCT_DETAILS)) {
 }
 // Aliases point at one canonical URL so they do not compete in search.
 for (const route of Object.keys(routes)) {
-  const canonical = ({ '/': '/home', '/about': '/who-we-are', '/get-a-quote': '/contact' })[route] || route;
+  const canonical = ({ '/': '/home', '/about': '/who-we-are', '/contact': '/get-a-quote' })[route] || route;
   const path = (route === '/' ? 'dist' : 'dist' + route) + '/index.html';
   fs.writeFileSync(path, fs.readFileSync(path, 'utf8').replace('</head>', `<link rel="canonical" href="${SITE_URL + canonical}" /><meta property="og:url" content="${SITE_URL + canonical}" /></head>`));
 }
