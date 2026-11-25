@@ -113,3 +113,20 @@ connection. Removed the YC Solutions collaboration section; corrected Cloud
 Rexpo spelling. Who We Are metadata and initial HTML include group content.
 Local build and seven backend tests passed. Responsive company/product checks
 cover 320-1920px plus short landscape; no physical-device testing is claimed.
+
+READABLE PROCESS AND QUOTE FLOW - 25 NOVEMBER 2026
+Replaced the 3D pinned process with a larger manual step panel and restrained
+transition. Mobile/tablet layouts show all five process cards. No spinning,
+blurred background cards or glow decorations remain in this section.
+Navigation now says Get a Quote. /get-a-quote is canonical; /contact remains
+an alias. Quote form includes optional product/project and quantity, retained
+through the SMTP backend. No inquiry-type selector was added.
+Build, seven backend tests, and browser checks across 320-1920px plus short
+landscape passed; successful browser submission was simulated. SMTP remains
+unconfigured and actual delivery has not been verified.
+
+QUOTE FORM FINAL FIELDS - 25 NOVEMBER 2026
+Per user refinement, the form retains only name, email, company name, country
+and message (plus the invisible spam trap). Separate product/quantity fields
+were removed before publication. Get a Quote navigation and the simplified
+readable home process are retained.

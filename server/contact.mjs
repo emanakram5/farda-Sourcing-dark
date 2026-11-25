@@ -48,7 +48,7 @@ export function createContactServer({ env = process.env, transport } = {}) {
       if (!mail) return reply(503, { error: 'Online messaging is temporarily unavailable. Please email info@fardasourcing.com directly.' });
       const result = await mail.sendMail({
         from: env.CONTACT_FROM, to: env.CONTACT_TO || 'info@fardasourcing.com', replyTo: values.email,
-        subject: 'New website contact message',
+        subject: 'New website quote request',
         text: Object.entries(values).map(([key, value]) => key + ': ' + value).join('\n\n'),
       });
       if (!result.accepted?.length) throw new Error('SMTP did not accept the recipient');

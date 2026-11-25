@@ -104,9 +104,9 @@ export default function Contact() {
         <div className="contact__info">
           <SectionHeader
             as="h1"
-            eyebrow="Contact Us"
-            title={"Let's Build Something\nGreat Together"}
-            text="Have a question or looking to source a product? We are here to help. Get in touch with us today."
+            eyebrow="Get a Quote"
+            title={"Tell us what you need.\nWe will help you source it."}
+            text="Share the product, estimated quantity and delivery destination. Our team will review your requirements and get back to you."
             maxWidth={440}
           />
           <ul className="contact__details">
@@ -135,10 +135,10 @@ export default function Contact() {
               <span className="contact__success-icon">
                 <Icon name="check" size={28} color="#fff" strokeWidth={3} />
               </span>
-              <h2>Thank you for contacting us</h2>
-              <p>Your message has been accepted for delivery. Our team will respond to the email address you provided.</p>
+              <h2>Your quote request is on its way</h2>
+              <p>Your request has been accepted for delivery. Our team will review the details and respond to the email address you provided.</p>
               <Button variant="outline" onClick={() => setSent(false)}>
-                Send another message
+                Request another quote
               </Button>
             </div>
           ) : (
@@ -220,7 +220,7 @@ export default function Contact() {
                 icon={sending ? undefined : "arrow-right"}
                 disabled={sending}
               >
-                {sending ? "Sending..." : "Send Message"}
+                {sending ? "Sending..." : "Request a Quote"}
               </Button>
             </form>
           )}

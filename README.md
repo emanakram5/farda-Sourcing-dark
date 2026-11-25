@@ -20,8 +20,8 @@ Use the URL printed by Vite. On Windows, use `npm.cmd` if PowerShell blocks `npm
 - `/products`: six clickable products with dedicated detail pages at `/products/:slug`.
 - `/services`: supplier partnership, six services and franchise opportunities.
 - `/our-mission`: franchise content; `/franchise`, `/supplier` and `/markets` also remain available.
-- `/contact`: dedicated Contact Us page with validated submission to a server-side SMTP endpoint. SMTP setup is required before messages can be delivered.
-- `/`, `/about` and `/get-a-quote` are aliases; `/how-it-works` redirects to home. Unknown routes display a 404 view.
+- `/get-a-quote`: dedicated quote request page with validated submission to a server-side SMTP endpoint. SMTP setup is required before messages can be delivered.
+- `/`, `/about` and `/contact` are aliases; `/how-it-works` redirects to home. Unknown routes display a 404 view.
 
 Edit shared content and images in `src/data/siteData.js`, product descriptions and the canonical domain in `src/data/productDetails.js`, and layout/routes in `src/App.jsx`. Global styles load from `src/styles/`; page-specific styles live beside their components.
 
