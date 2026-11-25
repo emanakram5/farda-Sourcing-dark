@@ -273,7 +273,7 @@ function Home() {
             Innovation, <span className="hero-today">Today</span>
           </h1>
           <p>
-            AI robotics, smart technology and industrial products from verified factories, delivered by one
+            Futuristic products from verified factories, delivered by one
             partner from first quote to final shipment.
           </p>
           <div className="actions">
